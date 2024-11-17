@@ -101,7 +101,7 @@
 }
 
 #menu {
-    background: linear-gradient(to bottom, #ffe4e1, #fff0f5);
+    background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
     padding: 50px 20px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

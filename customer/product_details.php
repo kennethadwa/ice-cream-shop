@@ -14,7 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
-      /* Button Styles for Ice Cream Theme */
+      
+      body{
+        background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+      }
+      
       .btn {
           border-radius: 50px;
           padding: 8px 15px;

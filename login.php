@@ -17,7 +17,7 @@
         /* Custom Ice Cream Shop theme */
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb); /* Soft pastel gradient */
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
             height: 100vh;
             margin: 0;
             display: flex;
