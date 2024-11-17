@@ -24,24 +24,12 @@
 
       /* No Dip button */
       .product-btn {
-          background: #FF6E40;
+          background: darkblue;
           color: white;
       }
 
       .product-btn:hover {
-          background: #FF6E40;
-          color: white;
-      }
-
-      /* Size buttons */
-      .btn-size {
-          background: #FFB6C1;
-          color: white;
-          margin-right: 10px;
-      }
-
-      .btn-size:hover {
-          background: #FF6F61;
+          background: blue;
           color: white;
       }
 
@@ -79,18 +67,28 @@
           object-fit: cover;
       }
 
-      /* Related Products Section */
+     
       .bg-light {
-          background-color: #FFF0F5; /* Soft light pink for related products */
+          background-color: #FFF0F5;
       }
 
-      /* Input Quantity Style */
+    
       #inputQuantity {
           font-size: 1.2rem;
           padding: 5px 10px;
           border-radius: 5px;
           border: 1px solid #FFB6C1;
           max-width: 60px;
+      }
+  
+      .checkbox-label, .radio-label {
+          font-size: 1rem;
+          color: black;
+          margin-right: 20px;
+      }
+
+      .checkbox-input, .radio-input {
+          margin-right: 10px;
       }
     </style>
 </head>
@@ -110,26 +108,37 @@
                         <span>₱55.99</span>
                     </div>
                     <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
-                    
 
-
-                    <!-- Category buttons (No Dip and With Dip) -->
-                    <strong style="margin-bottom: 50px;">Toppings</strong>
+                    <!-- Toppings radio buttons -->
+                    <strong>Toppings</strong>
                     <div class="mb-5 mt-1">
-                        <button class="btn product-btn">No Dip</button>
-                        <button class="btn product-btn">With Dip</button>
+                        <label class="radio-label">
+                            <input type="radio" class="radio-input" name="topping" id="noDip" />
+                            No Dip
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" class="radio-input" name="topping" id="withDip" />
+                            With Dip
+                        </label>
                     </div>
 
-
-                    <!-- Size buttons (55ML and 75ML) -->
-                     <strong style="margin-bottom: 50px;">Sizes</strong>
-                    <div class="mb-5 mt-1">  
-                        <button class="btn product-btn">55ML</button>
-                        <button class="btn product-btn">75ML</button>
+                    <!-- Sizes radio buttons -->
+                    <strong>Sizes</strong>
+                    <div class="mb-5 mt-1">
+                        <label class="radio-label">
+                            <input type="radio" class="radio-input" name="size" id="size55ml" />
+                            55ML
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" class="radio-input" name="size" id="size75ml" />
+                            75ML
+                        </label>
                     </div>
 
-                    <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <!-- Quantity input -->
+                    <div class="d-flex" style="flex-direction: column;">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem; border: 1px solid black;" />
+                        <br>
                         <button class="btn product-btn flex-shrink-0" type="button">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
@@ -139,6 +148,7 @@
             </div>
         </div>
     </section>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
