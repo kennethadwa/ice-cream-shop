@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Login - Sweet Treats Ice Cream Shop</title>
+    <title>Sign Up - Sweet Treats Ice Cream Shop</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
     <!-- Google Fonts -->
@@ -38,7 +38,7 @@
         }
 
         .form-outline {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .btn-primary {
@@ -58,18 +58,14 @@
             color: #ff9a8b; 
         }
 
-        .form-check-input {
-            border-radius: 50%;
-        }
-
-        .login-form-container {
+        .signup-form-container {
             border-radius: 15px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             margin: 0 15px;
             background: #ffffff; 
-            padding: 30px;
+            padding: 20px;
             width: 100%;
-            max-width: 500px;
+            max-width: 800px;
         }
 
         .forgot-password-link {
@@ -83,38 +79,63 @@
 </head>
 <body>
 
-    <!-- Login Form -->
-    <div class="login-form-container">
-        <h1 class="text-center">Login to Paparazzi</h1>
+    <!-- Sign Up Form -->
+    <div class="signup-form-container">
+        <h1 class="text-center">Sign Up</h1>
         <br>
         <div class="col text-center">
-          Don't have an account? <a href="signup.php" class="forgot-password-link" style="color: blue;">Sign Up</a>
+            Already have an account? <a href="login.php" class="forgot-password-link" style="color: blue;">Login</a>
         </div>
         <br>
-        <form action="login.php" method="POST">
+        <form action="signup.php" method="POST">
+            <div class="row">
+                <!-- First Name input -->
+                <div class="col-md-6">
+                    <div class="form-outline">
+                        <label class="form-label" for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required />
+                    </div>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="col-md-6">
+                    <div class="form-outline">
+                        <label class="form-label" for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Sex input -->
+                <div class="col-md-6">
+                    <div class="form-outline">
+                        <label class="form-label" for="sex">Sex</label>
+                        <select id="sex" name="sex" class="form-control" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Address input -->
+                <div class="col-md-6">
+                    <div class="form-outline">
+                        <label class="form-label" for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+
             <!-- Email input -->
             <div class="form-outline">
                 <label class="form-label" for="email">Email address</label>
                 <input type="email" id="email" name="email" class="form-control" required />
             </div>
 
-            <!-- Password input -->
-            <div class="form-outline">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control" required />
-            </div>
-
-            <!-- Remember me checkbox and Forgot password link -->
-            <div class="row mb-4">
-                <div class="col d-flex justify-content-start">
-                    <div class="form-check">
-                        <a href="#" class="forgot-password-link" style="color: blue;">Forgot password?</a>
-                    </div>
-                </div>        
-            </div>
-
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
     </div>
 
