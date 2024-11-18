@@ -76,16 +76,23 @@
         <br>
 
         <!-- User Account Dropdown -->
-            <div class="dropdown" style="margin-left: 20px;">
-                <button class="btn btn-outline-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                 <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/user.png" alt="user"/>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Log Out</a></li>
-                </ul>
-            </div>
+           <div class="dropdown" style="margin-left: 20px;">
+               <button class="btn btn-outline-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                   <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/user.png" alt="user"/>
+               </button>
+               <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                   <li>
+                       <a class="dropdown-item" href="profile.php">
+                           <i class="bi bi-person-circle me-2"></i> My Account
+                       </a>
+                   </li>
+                   <li>
+                       <a class="dropdown-item" href="logout.php">
+                           <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                       </a>
+                   </li>
+               </ul>
+           </div>
     </div>
 </nav>
 

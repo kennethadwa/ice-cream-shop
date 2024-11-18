@@ -19,7 +19,7 @@
 
     .ice-cream-btn {
     display: inline-block;
-    background: linear-gradient(145deg, #ff7b7b, #f76c6c); /* Darker pink and red tones */
+    background: linear-gradient(145deg, #ff7b7b, #f76c6c);
     color: white;
     font-weight: bold;
     border: none;
@@ -207,7 +207,7 @@
                 <div class="card">
                     <img src="./assets/img/ten-yen.png" class="card-img-top" alt="Ice Cream 1">
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bolder">Ten Yen Ice Cream</h5>
+                        <h5 class="card-title fw-bolder" style="color:#ff4c61;">Ten Yen Ice Cream</h5>
                         <p class="card-text">₱55.99</p>
                         <a href="product_details.php" class="ice-cream-btn">View</a>
                     </div>
@@ -218,7 +218,7 @@
                 <div class="card">
                     <img src="./assets/img/ice-cream-cone.png" class="card-img-top" alt="Ice Cream 3">
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bolder">Ice Cream Cone <br> <span style="color:green;">(Flavors of the Month)</span></h5>
+                        <h5 class="card-title fw-bolder" style="color:#ff4c61;">Ice Cream Cone <br> <span style="color:#ff4c61;">(Flavors of the Month)</span></h5>
                         <p class="card-text">₱45.99</p>
                         <a href="product_details.php" class="ice-cream-btn">View</a>
                     </div>
@@ -229,7 +229,7 @@
                 <div class="card">
                     <img src="./assets/img/taiyaki.png" class="card-img-top" alt="Ice Cream 2">
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bolder">Taiyaki Fish Ice Cream</h5>
+                        <h5 class="card-title fw-bolder" style="color:#ff4c61;">Taiyaki Fish Ice Cream</h5>
                         <p class="card-text">₱60.99</p>
                         <a href="product_details.php" class="ice-cream-btn">View</a>
                     </div>

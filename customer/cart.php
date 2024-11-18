@@ -18,7 +18,7 @@
         }
         h1 {
             font-family: 'Pacifico', cursive;
-            color: #f44336;
+            color: #ff6b81;
             margin-bottom: 30px;
         }
         .container {
@@ -29,21 +29,19 @@
         }
         .table {
             background-color: #fce4ec; 
-            border: 1px solid #f44336; 
+            border: 1px solid #ff6b81;
         }
         .table th, .table td {
-            color: #e91e63; 
+            color: black; 
         }
         .table thead {
-            background-color: #f44336; 
+            background-color: #ff6b81; 
             color: white;
         }
         .btn-success {
-            background-color: #f44336; 
-            border-color: #f44336;
-        }
-        .btn-success:hover {
-            background-color: #e91e63; 
+            background-color: #ff6b81; 
+            border-color: #ff6b81;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
         .d-flex h3 {
             font-size: 1.5rem;
@@ -109,7 +107,18 @@
 
         <div class="d-flex justify-content-between">
             <h3>Total Amount: ₱1200.00</h3>
-            <button class="btn btn-success">Proceed to Pay (COD)</button>
+            <div>
+                <label for="payment-method" style="font-weight: bold;">Select Payment Method:</label>
+                <br>
+                <select id="payment-method" class="form-select" style="width: 200px;">
+                    <option value="cod">Cash on Delivery (COD)</option>
+                </select>
+                <br>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success mt-2"><i class="bi bi-cart-check"></i> Order Now</button>
+                </div>
+                
+            </div>
         </div>
     </div>
 
