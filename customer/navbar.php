@@ -55,21 +55,21 @@
         
         <div class="collapse navbar-collapse" id="navbarNav" style="margin-right: 50px;">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link text-dark" href="#" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍦 Home</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#best-sellers" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍨 Best Sellers</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#menu" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍧 Menu</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#order-history" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">
+                <li class="nav-item"><a class="nav-link text-dark" href="index.php" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍦 Home</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="index.php#best-sellers" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍨 Best Sellers</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="index.php#menu" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍧 Menu</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="order_history.php" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">
                     <i class="bi-clock-history me-1" style="color: #ff69b4;"></i> Order History
                 </a></li>
                 &nbsp;
             </ul>
             &nbsp;
             <form class="d-flex">
-                <button class="btn" type="submit" style="background: #ff69b4; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: white;">
+                <a class="btn" href="cart.php" type="submit" style="background: #ff69b4; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: white;">
                     <i class="bi-cart-fill me-1" style="color: white;"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
+                </a>
             </form>
         </div>
 
