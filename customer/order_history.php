@@ -81,7 +81,8 @@
                 <tr>
                     <th>Customer Name</th>
                     <th>Address</th>
-                    <th>Ice Cream Name</th>
+                    <th>Ice Cream</th>
+                    <th>Quantity</th>
                     <th>Add Ons</th>
                     <th>Sizes</th>
                     <th>Price</th>
@@ -95,6 +96,7 @@
                     <td>Jane Doe</td>
                     <td>123 Sweet St, Candyville</td>
                     <td>Chocolate Sundae</td>
+                    <td>1</td>
                     <td>Sprinkles, Cherry</td>
                     <td>Large</td>
                     <td>$5.99</td>
@@ -104,10 +106,21 @@
                     <td>Jane Doe</td>
                     <td>123 Sweet St, Candyville</td>
                     <td>Vanilla Delight</td>
+                    <td>1</td>
                     <td>Caramel Drizzle</td>
                     <td>Medium</td>
                     <td>$4.49</td>
-                    <td style="font-weight: bold; color: green;">Our For Delivery</td>
+                    <td style="font-weight: bold; color: orange;">Our For Delivery</td>
+                </tr>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>123 Sweet St, Candyville</td>
+                    <td>Vanilla Delight</td>
+                    <td>1</td>
+                    <td>Caramel Drizzle</td>
+                    <td>Medium</td>
+                    <td>$4.49</td>
+                    <td style="font-weight: bold; color: green;">Delivered</td>
                 </tr>
             </tbody>
         </table>
