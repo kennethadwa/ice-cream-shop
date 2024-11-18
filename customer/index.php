@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Treats - Ice Cream Shop</title>
+    <title>Paparazzi - Ice Cream Shop</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap icons-->
@@ -413,22 +413,9 @@
 </section>
 
 
-    <!-- Footer -->
-    <footer class="py-5" style="background-color: #ff9999;">
-        <div class="container d-flex justify-content-between">
-            <!-- Google Map -->
-            <div>
-                <iframe src="https://www.google.com/maps/embed?pb=" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <!-- Contact -->
-            <div class="text-white">
-                <h5>Contact Us</h5>
-                <p>Email: support@sweettreats.com</p>
-                <p>Phone: +123-456-7890</p>
-                <p>Address: 123 Ice Cream Street</p>
-            </div>
-        </div>
-    </footer>
+   <!-- Footer -->
+    <?php include('footer.php'); ?>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
