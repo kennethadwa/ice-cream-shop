@@ -58,7 +58,7 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Products</span>
                 </a>
-                <div id="collapseTwo" class="core collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="core collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
                     <div class="core py-2 collapse-inner rounded" style="background-color: transparent;">
                         <a class="collapse-item" href="manage_ice_cream.php" style="color: white;">Manage Ice Cream</a>
                         <a class="collapse-item" href="manage_size.php" style="color: white;">Manage Size</a>
@@ -72,6 +72,31 @@
             <!-- Divider -->
             <hr class="sidebar-divider" style="background:white;">
 
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Orders
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#orders"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage Orders</span>
+                </a>
+                <div id="orders" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
+                    <div class="py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="pending_orders.php" style="color: #FF204E;">Pending Orders</a>
+                        <a class="collapse-item" href="completed_orders.php" style="color: white;">Completed Orders</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider" style="background:white;">
+
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 User Management
@@ -84,8 +109,8 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>User Account</span>
                 </a>
-                <div id="userAccount" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" >
-                    <div class="py-2 collapse-inner rounded" style="background-color: transparent;">
+                <div id="userAccount" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
+                    <div class="py-2 collapse-inner rounded">
                         <a class="collapse-item" href="customer_account.php" style="color: #FF204E;">Customer</a>
                         <a class="collapse-item" href="admin_account.php" style="color: white;">Admin</a>
                     </div>

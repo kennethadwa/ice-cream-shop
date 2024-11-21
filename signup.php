@@ -107,17 +107,14 @@
             </div>
 
             <div class="row">
-                <!-- Sex input -->
+                <!-- Contact input -->
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <label class="form-label" for="sex">Sex</label>
-                        <select id="sex" name="sex" class="form-control" required>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
+                        <label class="form-label" for="address">Contact No.</label>
+                        <input type="number" id="address" name="address" class="form-control" required />
                     </div>
                 </div>
+    
 
                 <!-- Address input -->
                 <div class="col-md-6">

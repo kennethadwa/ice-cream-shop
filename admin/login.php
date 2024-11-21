@@ -122,10 +122,6 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot_password.php">Forgot Password?</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
