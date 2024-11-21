@@ -189,7 +189,7 @@
      <?php include('navbar.php'); ?>
 
     <!-- Header -->
-    <header class="py-5 text-white text-center" style="background-color: #ffb6c1;">
+    <header id="home" class="py-5 text-white text-center" style="background-color: #ffb6c1;">
         <div class="container">
             <h1 class="display-3 fw-bolder" style="font-family: 'Pacifico', cursive; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);">Welcome to Paparazzi Ice Cream Station</h1>
             <br>

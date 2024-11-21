@@ -55,7 +55,7 @@
         
         <div class="collapse navbar-collapse" id="navbarNav" style="margin-right: 50px;">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link text-dark" href="index.php" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍦 Home</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="index.php#home" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍦 Home</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="index.php#best-sellers" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍨 Best Sellers</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="index.php#menu" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">🍧 Menu</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="order_history.php" style="color: #ff69b4; font-size: 1.2rem; font-weight: bold;">
