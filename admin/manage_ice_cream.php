@@ -128,7 +128,6 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
-                                    <h5 class="card-title text-center" style="color: black;">Add New Ice Cream Product</h5>
                                     <form>
                                         <div class="form-group">
                                             <label for="productName">Product Name</label>
@@ -157,7 +156,6 @@
                            <div class="col-md-6">
                                <div class="card">
                                    <div class="card-body" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
-                                       <h5 class="card-title text-center" style="color: black;">Ice Cream Products</h5>
                                        <ul class="list-group" id="product-list">
                                            <!-- Example of a product item with Image, Edit and Delete buttons -->
                                            <li class="list-group-item" style="background: #FFF2D7; color: black; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">

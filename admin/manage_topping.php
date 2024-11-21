@@ -53,7 +53,6 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px;">
-                                    <h5 class="card-title text-center" style="color: black;">Add New Topping</h5>
                                     <form>
                                         <div class="form-group">
                                             <label for="toppingName">Topping Name</label>
@@ -80,7 +79,6 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px;">
-                                    <h5 class="card-title text-center" style="color: black;">Available Toppings</h5>
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <strong>Sprinkles</strong>

@@ -52,10 +52,9 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px;">
-                                    <h5 class="card-title text-center" style="color: black;">Add New Size</h5>
                                     <form>
                                         <div class="form-group">
-                                            <label for="sizeName">Size Name</label>
+                                            <label for="sizeName">Size</label>
                                             <input type="text" class="form-control" id="sizeName"
                                                 placeholder="Enter size name (e.g., Small, Medium, Large)">
                                         </div>
@@ -75,7 +74,6 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px">
-                                    <h5 class="card-title text-center" style="color: black;">Available Sizes</h5>
                                     <ul class="list-group" id="size-list">
                                         <!-- Example Size Items -->
                                         <li class="list-group-item">
