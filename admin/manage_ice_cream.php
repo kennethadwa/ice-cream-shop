@@ -79,7 +79,7 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
-        /* Page container */
+
         .container-fluid {
             padding: 30px;
         }
@@ -163,7 +163,7 @@
                                                <strong>Vanilla Delight</strong><br>
                                                <small>Quantity: 50</small><br>
                                                <p>Description: A creamy vanilla flavored ice cream with a rich, smooth texture.</p>
-                                               <button class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(1)">Edit</button>
+                                               <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(1)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(1)">Delete</button>
                                            </li>
                                            <li class="list-group-item" style="background: #543310; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
@@ -171,7 +171,7 @@
                                                <strong>Chocolate Fudge</strong><br>
                                                <small>Quantity: 30</small><br>
                                                <p>Description: A rich chocolate ice cream with gooey fudge swirls.</p>
-                                               <button class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(2)">Edit</button>
+                                               <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(2)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(2)">Delete</button>
                                            </li>
                                            <li class="list-group-item" style="background: #FF204E; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
@@ -179,7 +179,7 @@
                                                <strong>Strawberry Swirl</strong><br>
                                                <small>Quantity: 40</small><br>
                                                <p>Description: A sweet strawberry ice cream with a touch of vanilla.</p>
-                                               <button class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(3)">Edit</button>
+                                               <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(3)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(3)">Delete</button>
                                            </li>
                                            <li class="list-group-item" style="background: #F09319; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
@@ -187,7 +187,7 @@
                                                <strong>Mango Tango</strong><br>
                                                <small>Quantity: 20</small><br>
                                                <p>Description: A tropical mango flavored ice cream.</p>
-                                               <button class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(4)">Edit</button>
+                                               <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(4)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(4)">Delete</button>
                                            </li>
                                            <li class="list-group-item" style="background: #3D5300; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
@@ -195,7 +195,7 @@
                                                <strong>Pistachio Dream</strong><br>
                                                <small>Quantity: 25</small><br>
                                                <p>Description: A creamy pistachio ice cream with roasted nuts.</p>
-                                               <button class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(5)">Edit</button>
+                                               <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(5)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(5)">Delete</button>
                                            </li>
                                            <li class="list-group-item" style="background: #6A9C89; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
@@ -203,7 +203,7 @@
                                                <strong>Mint Chocolate Chip</strong><br>
                                                <small>Quantity: 15</small><br>
                                                <p>Description: A cool mint ice cream with chocolate chips.</p>
-                                               <button class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(6)">Edit</button>
+                                               <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(6)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(6)">Delete</button>
                                            </li>
                                        </ul>

@@ -71,19 +71,19 @@
                                         <li class="list-group-item">
                                             <strong>Vanilla</strong><br>
                                             <p>Description: Classic and creamy.</p>
-                                            <button class="btn btn-sm" style="background: green; color: white;">Edit</button>
+                                            <a href="edit_flavor.php" class="btn btn-sm" style="background: green; color: white;">Edit</a>
                                             <button class="btn btn-sm" style="background: red; color: white;">Delete</button>
                                         </li>
                                         <li class="list-group-item">
                                             <strong>Chocolate</strong><br>
                                             <p>Description: Rich and smooth.</p>
-                                            <button class="btn btn-sm" style="background: green; color: white;">Edit</button>
+                                            <a href="edit_flavor.php" class="btn btn-sm" style="background: green; color: white;">Edit</a>
                                             <button class="btn btn-sm" style="background: red; color: white;">Delete</button>
                                         </li>
                                         <li class="list-group-item">
                                             <strong>Strawberry</strong><br>
                                             <p>Description: Sweet and fruity.</p>
-                                            <button class="btn btn-sm" style="background: green; color: white;">Edit</button>
+                                            <a href="edit_flavor.php" class="btn btn-sm" style="background: green; color: white;">Edit</a>
                                             <button class="btn btn-sm" style="background: red; color: white;">Delete</button>
                                         </li>
                                     </ul>

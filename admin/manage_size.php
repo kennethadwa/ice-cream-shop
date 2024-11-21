@@ -79,19 +79,19 @@
                                         <li class="list-group-item">
                                             <strong>Small</strong><br>
                                             <p>Description: Suitable for a single serving.</p>
-                                            <button class="btn btn-sm" style="background: green; color: white;">Edit</button>
+                                            <a href="edit_size.php" class="btn btn-sm" style="background: green; color: white;">Edit</a>
                                             <button class="btn btn-sm" style="background: red; color: white;">Delete</button>
                                         </li>
                                         <li class="list-group-item">
                                             <strong>Medium</strong><br>
                                             <p>Description: Perfect for sharing with one other person.</p>
-                                            <button class="btn btn-sm" style="background: green; color: white;">Edit</button>
+                                            <a href="edit_size.php" class="btn btn-sm" style="background: green; color: white;">Edit</a>
                                             <button class="btn btn-sm" style="background: red; color: white;">Delete</button>
                                         </li>
                                         <li class="list-group-item">
                                             <strong>Large</strong><br>
                                             <p>Description: Ideal for a family of four.</p>
-                                            <button class="btn btn-sm" style="background: green; color: white;">Edit</button>
+                                            <a href="edit_size.php" class="btn btn-sm" style="background: green; color: white;">Edit</a>
                                             <button class="btn btn-sm" style="background: red; color: white;">Delete</button>
                                         </li>
                                     </ul>

@@ -1,6 +1,6 @@
 <style>
     .navbar {
-        background-color: #FF204E;
+        background-color: #FF76CE;
         position: sticky;
         top: 0;
         z-index: 1000;
@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse d-flex justify-content-end mr-5" id="navbarNav">
             <!-- User Account Dropdown -->
             <div class="dropdown ms-3 mr-4">
-                <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: white; border: 1px solid black;">
+                <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: white;">
                     <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/user.png" alt="user" style="color: white; background: white;"/>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="userDropdown">

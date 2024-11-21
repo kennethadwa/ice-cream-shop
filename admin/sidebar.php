@@ -1,6 +1,6 @@
 <style>
     .bg-gradient-icecream {
-        background: #FF204E;
+        background: #FF76CE;
         background-size: cover;
     }
     .sidebar-dark .nav-link {
@@ -61,9 +61,9 @@
                 <div id="collapseTwo" class="core collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="core py-2 collapse-inner rounded" style="background-color: transparent;">
                         <a class="collapse-item" href="manage_ice_cream.php" style="color: white;">Manage Ice Cream</a>
-                        <a class="collapse-item" href="manage_size.php" style="color: white;">Manage Sizes</a>
-                        <a class="collapse-item" href="manage_flavor.php" style="color: white;">Manage Flavors</a>
-                        <a class="collapse-item" href="manage_topping.php" style="color: white;">Manage Toppings</a>
+                        <a class="collapse-item" href="manage_size.php" style="color: white;">Manage Size</a>
+                        <a class="collapse-item" href="manage_flavor.php" style="color: white;">Manage Flavor</a>
+                        <a class="collapse-item" href="manage_topping.php" style="color: white;">Manage Topping</a>
                     </div>
                 </div>
             </li>
