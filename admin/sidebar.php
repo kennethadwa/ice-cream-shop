@@ -95,15 +95,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider" style="background:white;">
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                 <a class="nav-link" href="logout.php" style="display: flex; justify-content: center;">
-                    <span style="background: red; padding: 10px 20px;">Log Out</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
