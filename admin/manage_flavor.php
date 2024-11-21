@@ -31,6 +31,9 @@
             <!-- Main Content -->
             <div id="content">
 
+             <!--NAVBAR-->
+         <?php include ('navbar.php'); ?>
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid mt-5">
 
@@ -130,6 +133,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

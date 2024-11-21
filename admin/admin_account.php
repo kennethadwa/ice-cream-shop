@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Customer Accounts</title>
+    <title>Admin Accounts</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-         <!--NAVBAR-->
+        <!--NAVBAR-->
          <?php include ('navbar.php'); ?>
 
             <!-- Main Content -->
@@ -39,10 +39,11 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid mt-5">
+
                     <!-- DataTales Example -->
                     <div class="card mb-4" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Customer Account List</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Admin Account List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -54,7 +55,6 @@
                                             <th>Contact Number</th>
                                             <th>Address</th>
                                             <th>Email</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -64,7 +64,6 @@
                                             <th>Contact Number</th>
                                             <th>Address</th>
                                             <th>Email</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -82,10 +81,6 @@
                                                 <td>{$customer['contact_number']}</td>
                                                 <td>{$customer['address']}</td>
                                                 <td>{$customer['email']}</td>
-                                                <td>
-                                                    <a href='edit_customer.php' class='btn btn-warning btn-sm'>Edit</a>
-                                                    <a href='delete_customer.php' class='btn btn-danger btn-sm'>Delete</a>
-                                                </td>
                                             </tr>";
                                         }
                                         ?>
