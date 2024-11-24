@@ -48,6 +48,7 @@
                                             <th>Product</th>
                                             <th>Price</th>
                                             <th>Order Type</th>
+                                            <th>Pickup Time</th>
                                             <th>Status</th>
                                             <th>Completed At</th>
                                         </tr>
@@ -59,6 +60,7 @@
                                             <th>Product</th>
                                             <th>Price</th>
                                             <th>Order Type</th>
+                                            <th>Pickup Time</th>
                                             <th>Status</th>
                                             <th>Completed At</th>
                                         </tr>
@@ -70,6 +72,7 @@
                                             <td>Vanilla Ice Cream</td>
                                             <td>₱55.00</td>
                                             <td><span class="badge badge-success">For Delivery</span></td>
+                                            <td>N/A</td>
                                             <td><span class="badge badge-success">Completed</span></td>
                                             <td>2024-11-20 14:30</td>
                                         </tr>
@@ -79,6 +82,7 @@
                                             <td>Chocolate Ice Cream</td>
                                             <td>₱56.50</td>
                                             <td><span class="badge badge-primary">For Pickup</span></td>
+                                            <td>2024-11-20 15:00</td>
                                             <td><span class="badge badge-success">Completed</span></td>
                                             <td>2024-11-20 15:45</td>
                                         </tr>

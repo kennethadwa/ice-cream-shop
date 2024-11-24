@@ -58,10 +58,16 @@
 
                                 <div class="form-group">
                                     <label for="orderType">Order Type</label>
-                                    <select class="form-control" id="orderType">
-                                        <option selected>For Delivery</option>
-                                        <option>For Pickup</option>
-                                    </select>
+                                    <div class="d-flex align-items-center">
+                                        <select class="form-control mr-3" id="orderType">
+                                            <option selected>For Delivery</option>
+                                            <option>For Pickup</option>
+                                        </select>
+                                        <div>
+                                            <label for="pickupTime" class="d-block">Pickup Time</label>
+                                            <input type="text" class="form-control" id="pickupTime" value="N/A" readonly>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -71,6 +77,12 @@
                                         <option>Completed</option>
                                         <option>Cancelled</option>
                                     </select>
+                                </div>
+
+                                <!-- Message input (hidden by default) -->
+                                <div class="form-group" id="cancelMessageGroup" style="display: none;">
+                                    <label for="cancelMessage">Cancellation Message</label>
+                                    <textarea class="form-control" id="cancelMessage" rows="3" placeholder="Enter reason for cancellation"></textarea>
                                 </div>
 
                                 <div class="form-group text-right">
@@ -95,9 +107,29 @@
 
     <!-- Core plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages -->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Script to update pickup time based on order type -->
+    <script>
+        document.getElementById('orderType').addEventListener('change', function () {
+            const pickupTimeInput = document.getElementById('pickupTime');
+            if (this.value === 'For Pickup') {
+                pickupTimeInput.value = '3:00 PM'; // Example pickup time
+            } else {
+                pickupTimeInput.value = 'N/A';
+            }
+        });
+
+        // Show or hide the cancellation message input based on selected status
+        document.getElementById('status').addEventListener('change', function () {
+            const cancelMessageGroup = document.getElementById('cancelMessageGroup');
+            if (this.value === 'Cancelled') {
+                cancelMessageGroup.style.display = 'block';
+            } else {
+                cancelMessageGroup.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

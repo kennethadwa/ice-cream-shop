@@ -64,10 +64,6 @@
                                             <textarea class="form-control" id="description" rows="3"
                                                 placeholder="Enter description for this topping"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="toppingImage">Topping Image</label>
-                                            <input type="file" class="form-control" id="toppingImage" accept="image/*">
-                                        </div>
                                         <button type="submit" class="btn btn-block mt-2"
                                             style="background: #FF204E; color: white;">Add Topping</button>
                                     </form>

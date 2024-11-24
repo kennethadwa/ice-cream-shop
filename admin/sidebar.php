@@ -89,6 +89,7 @@
                     <div class="py-2 collapse-inner rounded">
                         <a class="collapse-item" href="pending_orders.php" style="color: #FF204E;">Pending Orders</a>
                         <a class="collapse-item" href="completed_orders.php" style="color: white;">Completed Orders</a>
+                        <a class="collapse-item" href="cancelled_orders.php" style="color: white;">Cancelled Orders</a>
                     </div>
                 </div>
             </li>

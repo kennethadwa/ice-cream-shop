@@ -21,12 +21,6 @@
             color: #ff6b81;
             margin-bottom: 30px;
         }
-        .container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
         .table {
             background-color: #fce4ec; 
             border: 1px solid #ff6b81;
@@ -114,15 +108,40 @@
                     <option value="cod">Cash on Delivery (COD)</option>
                 </select>
                 <br>
+                <label for="order-type" style="font-weight: bold; margin-top: 10px;">Order Type:</label>
+                <br>
+                <select id="order-type" class="form-select" style="width: 200px;">
+                    <option value="delivery">For Delivery</option>
+                    <option value="pickup">For Pick Up</option>
+                </select>
+                <br>
+                <!-- Pickup Time Input -->
+                <div id="pickup-time-container" style="display: none; margin-top: 10px;">
+                    <label for="pickup-time" style="font-weight: bold;">Pickup Time:</label>
+                    <input type="time" id="pickup-time" class="form-control" style="width: 200px;">
+                </div>
+                <br>    
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-success mt-2"><i class="bi bi-cart-check"></i> Order Now</button>
                 </div>
-                
             </div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show or hide the pickup time input field based on the selected order type
+        const orderTypeSelect = document.getElementById('order-type');
+        const pickupTimeContainer = document.getElementById('pickup-time-container');
+
+        orderTypeSelect.addEventListener('change', function () {
+            if (this.value === 'pickup') {
+                pickupTimeContainer.style.display = 'block';
+            } else {
+                pickupTimeContainer.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

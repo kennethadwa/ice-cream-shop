@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pending Orders</title>
+    <title>Cancelled Orders</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@
                     <!-- DataTable Example -->
                     <div class="card mb-4" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Pending Orders</h6>
+                            <h6 class="m-0 font-weight-bold text-danger">Cancelled Orders</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -50,7 +50,7 @@
                                             <th>Order Type</th>
                                             <th>Pickup Time</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th>Cancelled At</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -62,7 +62,7 @@
                                             <th>Order Type</th>
                                             <th>Pickup Time</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th>Cancelled At</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -72,11 +72,9 @@
                                             <td>Vanilla Ice Cream</td>
                                             <td>₱55.00</td>
                                             <td><span class="badge badge-success">For Delivery</span></td>
-                                            <td><span>N/A</span></td>
-                                            <td><span class="badge badge-danger">Pending</span></td>
-                                            <td>
-                                                <a href="edit_pending_order.php" class="btn btn-primary btn-sm">Update</a>
-                                            </td>
+                                            <td>N/A</td>
+                                            <td><span class="badge badge-danger">Cancelled</span></td>
+                                            <td>2024-11-20 14:30</td>
                                         </tr>
                                         <tr>
                                             <td>Jane Smith</td>
@@ -85,10 +83,8 @@
                                             <td>₱56.50</td>
                                             <td><span class="badge badge-primary">For Pickup</span></td>
                                             <td>2024-11-20 15:00</td>
-                                            <td><span class="badge badge-danger">Pending</span></td>
-                                            <td>
-                                                <a href="edit_pending_order.php" class="btn btn-primary btn-sm">Update</a>
-                                            </td>
+                                            <td><span class="badge badge-danger">Cancelled</span></td>
+                                            <td>2024-11-20 15:45</td>
                                         </tr>
                                     </tbody>
                                 </table>
