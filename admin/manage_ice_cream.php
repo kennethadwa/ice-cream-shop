@@ -141,6 +141,14 @@
                                             <label for="description">Description</label>
                                             <textarea class="form-control" id="description" rows="3" placeholder="Enter description"></textarea>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Order Type</label>
+                                            <select>
+                                                <option>For Delivery Only</option>
+                                                <option>For Pickup Only</option>
+                                                <option>For Delivery & Pickup</option>
+                                            </select>
+                                        </div>
                                         <!-- Image Upload Section -->
                                         <div class="form-group" style="margin-bottom: 28px;">
                                             <label for="productImage">Product Image</label>
@@ -160,8 +168,8 @@
                                            <!-- Example of a product item with Image, Edit and Delete buttons -->
                                            <li class="list-group-item" style="background: #FFF2D7; color: black; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
                                                <img src="https://via.placeholder.com/100" alt="Vanilla Delight" style="width: 100px; height: 100px;                            border-radius: 5px; float: left; margin-right: 15px;">
-                                               <strong>Vanilla Delight</strong><br>
-                                               <small>Quantity: 50</small><br>
+                                               <strong>Ten Yen Ice Cream</strong><br>
+                                               <small class="badge badge-primary">For Delivery Only</small><br>
                                                <p>Description: A creamy vanilla flavored ice cream with a rich, smooth texture.</p>
                                                <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(1)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(1)">Delete</button>
@@ -169,7 +177,7 @@
                                            <li class="list-group-item" style="background: #543310; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
                                                <img src="https://via.placeholder.com/100" alt="Chocolate Fudge" style="width: 100px; height: 100px;                            border-radius: 5px; float: left; margin-right: 15px;">
                                                <strong>Chocolate Fudge</strong><br>
-                                               <small>Quantity: 30</small><br>
+                                               <small class="badge badge-primary">For Pickup Only</small><br>
                                                <p>Description: A rich chocolate ice cream with gooey fudge swirls.</p>
                                                <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(2)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(2)">Delete</button>
@@ -177,7 +185,7 @@
                                            <li class="list-group-item" style="background: #FF204E; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
                                                <img src="https://via.placeholder.com/100" alt="Strawberry Swirl" style="width: 100px; height: 100px;                            border-radius: 5px; float: left; margin-right: 15px;">
                                                <strong>Strawberry Swirl</strong><br>
-                                               <small>Quantity: 40</small><br>
+                                               <small class="badge badge-primary">For Pickup Only</small><br>
                                                <p>Description: A sweet strawberry ice cream with a touch of vanilla.</p>
                                                <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(3)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(3)">Delete</button>
@@ -185,7 +193,7 @@
                                            <li class="list-group-item" style="background: #F09319; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
                                                <img src="https://via.placeholder.com/100" alt="Mango Tango" style="width: 100px; height: 100px;                            border-radius: 5px; float: left; margin-right: 15px;">
                                                <strong>Mango Tango</strong><br>
-                                               <small>Quantity: 20</small><br>
+                                               <small class="badge badge-primary">For Pickup Only</small><br>
                                                <p>Description: A tropical mango flavored ice cream.</p>
                                                <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(4)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(4)">Delete</button>
@@ -193,7 +201,7 @@
                                            <li class="list-group-item" style="background: #3D5300; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
                                                <img src="https://via.placeholder.com/100" alt="Pistachio Dream" style="width: 100px; height: 100px;                            border-radius: 5px; float: left; margin-right: 15px;">
                                                <strong>Pistachio Dream</strong><br>
-                                               <small>Quantity: 25</small><br>
+                                               <small class="badge badge-primary">For Pickup Only</small><br>
                                                <p>Description: A creamy pistachio ice cream with roasted nuts.</p>
                                                <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(5)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(5)">Delete</button>
@@ -201,7 +209,7 @@
                                            <li class="list-group-item" style="background: #6A9C89; color: white; border: none; box-shadow: 1px 1px 5px rgba(0,                           0,0,0.5);">
                                                <img src="https://via.placeholder.com/100" alt="Mint Chocolate Chip" style="width: 100px; height: 100px;                            border-radius: 5px; float: left; margin-right: 15px;">
                                                <strong>Mint Chocolate Chip</strong><br>
-                                               <small>Quantity: 15</small><br>
+                                               <small class="badge badge-primary">For Delivery & Pickup</small><br>
                                                <p>Description: A cool mint ice cream with chocolate chips.</p>
                                                <a href="edit_ice_cream.php" class="btn btn-sm" style="background: green; color: white;" onclick="editProduct(6)">Edit</a>
                                                <button class="btn btn-sm" style="background: red; color: white;" onclick="deleteProduct(6)">Delete</button>

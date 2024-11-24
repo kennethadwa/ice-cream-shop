@@ -50,6 +50,7 @@
                                             <th>Order Type</th>
                                             <th>Pickup Time</th>
                                             <th>Status</th>
+                                            <th>Message</th>
                                             <th>Cancelled At</th>
                                         </tr>
                                     </thead>
@@ -62,6 +63,7 @@
                                             <th>Order Type</th>
                                             <th>Pickup Time</th>
                                             <th>Status</th>
+                                            <th>Message</th>
                                             <th>Cancelled At</th>
                                         </tr>
                                     </tfoot>
@@ -74,6 +76,7 @@
                                             <td><span class="badge badge-success">For Delivery</span></td>
                                             <td>N/A</td>
                                             <td><span class="badge badge-danger">Cancelled</span></td>
+                                            <td>Customer requested cancellation.</td>
                                             <td>2024-11-20 14:30</td>
                                         </tr>
                                         <tr>
@@ -84,6 +87,7 @@
                                             <td><span class="badge badge-primary">For Pickup</span></td>
                                             <td>2024-11-20 15:00</td>
                                             <td><span class="badge badge-danger">Cancelled</span></td>
+                                            <td>Incorrect order placed.</td>
                                             <td>2024-11-20 15:45</td>
                                         </tr>
                                     </tbody>
