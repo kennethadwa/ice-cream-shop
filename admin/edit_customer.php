@@ -33,62 +33,67 @@
             <!-- Main Content -->
             <div id="content">
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-5">
+                <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h5 class="mb-0">Edit Customer Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="edit_customer.php" enctype="multipart/form-data">
+                            <!-- Profile Picture -->
+                            <div class="text-center mb-4">
+                                <img id="imagePreview" src="https://img.icons8.com/color/96/administrator-male.png" alt="Profile Picture">
+                            </div>
 
-                    <!-- Edit Form -->
-                    <div class="card mb-4" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Edit Customer Details</h6>
-                        </div>
-                        <div class="card-body">
-                            <form method="POST" action="edit_customer.php" enctype="multipart/form-data">
-                                <!-- Image Holder Above Full Name with Online Image -->
-                                <div class="form-group text-center mb-4">
-                                    <img width="88" height="88" src="https://img.icons8.com/color/48/administrator-male-skin-type-7.png" alt="administrator-male-skin-type-7" style="border: 1px solid black; padding: 10px; border-radius: 50%;"/>
-                                </div>
+                            <!-- Profile Picture Upload -->
+                            <div class="form-group mb-3">
+                                <label for="profile_image" class="form-label">Upload Profile Picture</label>
+                                <input type="file" class="form-control" id="profile_image" name="profile_image" accept="image/*">
+                            </div>
 
-                                <!-- Full Name Input -->
-                                <div class="form-group">
-                                    <label for="full_name">Full Name</label>
-                                    <input type="text" class="form-control" id="full_name" name="full_name" required>
-                                </div>
+                            <!-- Full Name -->
+                            <div class="form-group mb-3">
+                                <label for="full_name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter full name" required>
+                            </div>
 
-                                <!-- Age Input -->
-                                <div class="form-group">
-                                    <label for="age">Age</label>
-                                    <input type="number" class="form-control" id="age" name="age" required>
-                                </div>
+                            <!-- Age -->
+                            <div class="form-group mb-3">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" required>
+                            </div>
 
-                                <!-- Contact Number Input -->
-                                <div class="form-group">
-                                    <label for="contact_number">Contact Number</label>
-                                    <input type="text" class="form-control" id="contact_number" name="contact_number" required>
-                                </div>
+                            <!-- Contact Number -->
+                            <div class="form-group mb-3">
+                                <label for="contact_number" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number" required>
+                            </div>
 
-                                <!-- Address Input -->
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address" required>
-                                </div>
+                            <!-- Address -->
+                            <div class="form-group mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+                            </div>
 
-                                <!-- Email Input -->
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
+                            <!-- Email -->
+                            <div class="form-group mb-4">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                            </div>
 
-                                <!-- Image Upload Input -->
-                                <div class="form-group">
-                                    <label for="profile_image">Upload Profile Picture</label>
-                                    <input type="file" class="form-control-file" id="profile_image" name="profile_image" accept="image/*">
-                                </div>
-
-                                <!-- Submit Button -->
+                            <!-- Submit Button -->
+                            <div class="d-flex justify-content-between">
+                                <a href="customer_accounts.php" class="btn btn-secondary">Cancel</a>
                                 <button type="submit" class="btn btn-primary">Update Customer</button>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
                 <!-- End of Page Content -->
             </div>
             <!-- End of Main Content -->

@@ -18,7 +18,6 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -31,8 +30,8 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-        <!--NAVBAR-->
-         <?php include ('navbar.php'); ?>
+            <!-- Navbar -->
+            <?php include('navbar.php'); ?>
 
             <!-- Main Content -->
             <div id="content">
@@ -42,8 +41,9 @@
 
                     <!-- DataTales Example -->
                     <div class="card mb-4" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary">Admin Account List</h6>
+                            <a href="add_admin.php" class="btn btn-primary btn-sm">Add New Admin</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -91,6 +91,8 @@
                     </div>
                 </div>
                 <!-- End of Page Content -->
+
+            </div>
             <!-- End of Main Content -->
 
         </div>
@@ -109,14 +111,13 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="./js/demo/datatables-demo.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

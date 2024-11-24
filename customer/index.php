@@ -208,7 +208,8 @@
                     <img src="./assets/img/ten-yen.png" class="card-img-top" alt="Ice Cream 1">
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bolder" style="color:#ff4c61;">Ten Yen Ice Cream</h5>
-                        <p class="card-text">₱55.99</p>
+                        <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
+                        <p class="card-text fw-bold">₱55.99</p>
                         <a href="product_details.php" class="ice-cream-btn">View</a>
                     </div>
                 </div>
@@ -219,7 +220,8 @@
                     <img src="./assets/img/ice-cream-cone.png" class="card-img-top" alt="Ice Cream 3">
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bolder" style="color:#ff4c61;">Ice Cream Cone <br> <span style="color:#ff4c61;">(Flavors of the Month)</span></h5>
-                        <p class="card-text">₱45.99</p>
+                        <small class="badge badge-primary text-dark" style="background: pink;">For Pickup Only</small><br>
+                        <p class="card-text fw-bold">₱45.99</p>
                         <a href="product_details.php" class="ice-cream-btn">View</a>
                     </div>
                 </div>
@@ -230,7 +232,8 @@
                     <img src="./assets/img/taiyaki.png" class="card-img-top" alt="Ice Cream 2">
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bolder" style="color:#ff4c61;">Taiyaki Fish Ice Cream</h5>
-                        <p class="card-text">₱60.99</p>
+                        <small class="badge badge-primary text-dark" style="background: pink;">For Pickup Only</small><br>
+                        <p class="card-text fw-bold">₱60.99</p>
                         <a href="product_details.php" class="ice-cream-btn">View</a>
                     </div>
                 </div>
@@ -254,6 +257,7 @@
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Wafer Cone">
                             <div class="card-body text-center">
                                 <h5 class="fw-bolder">Wafer Cone</h5>
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Pickup Only</small><br>
                                 <p>No Dip / With Dip</p>
                                 <p class="fw-bold">₱50.00 - ₱60.00</p>
                                 <a href="product_details.php" class="ice-cream-btn">Add to Cart</a>
@@ -265,6 +269,7 @@
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Wafer Cone">
                             <div class="card-body text-center">
                                 <h5 class="fw-bolder">Wafer Cone</h5>
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Pickup Only</small><br>
                                 <p>No Dip / With Dip</p>
                                 <p class="fw-bold">₱50.00 - ₱60.00</p>
                                 <a href="product_details.php" class="ice-cream-btn">Add to Cart</a>
@@ -276,6 +281,7 @@
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Sugar Cone">
                             <div class="card-body text-center">
                                 <h5 class="fw-bolder">Sugar Cone</h5>
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Pickup Only</small><br>
                                 <p>No Dip / With Dip</p>
                                 <p class="fw-bold">₱55.00 - ₱65.00</p>
                                 <a href="product_details.php" class="ice-cream-btn">Add to Cart</a>
@@ -295,6 +301,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Float Sizes">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Sizes</h5>
                                 <p>500ML / 700ML</p>
                                 <p class="fw-bold">₱75.00 - ₱100.00</p>
@@ -306,6 +313,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Float Sizes">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Sizes</h5>
                                 <p>500ML / 700ML</p>
                                 <p class="fw-bold">₱75.00 - ₱100.00</p>
@@ -317,6 +325,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Float Flavors">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Flavors</h5>
                                 <p>Soda / Chocolate / Milky Float / Coffee / Fruit</p>
                                 <p class="fw-bold">₱85.00</p>
@@ -337,6 +346,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Cup Sizes">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Sizes</h5>
                                 <p>240ML / 360ML / 550ML</p>
                                 <p class="fw-bold">₱70.00 - ₱120.00</p>
@@ -348,6 +358,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Cup Sizes">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Sizes</h5>
                                 <p>240ML / 360ML / 550ML</p>
                                 <p class="fw-bold">₱70.00 - ₱120.00</p>
@@ -359,6 +370,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Cup Toppings">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Toppings</h5>
                                 <p>1 Topping / 2 Toppings / 3 Toppings</p>
                                 <p class="fw-bold">₱80.00 - ₱110.00</p>
@@ -379,6 +391,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="No Toppings">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">No Toppings</h5>
                                 <p class="fw-bold">₱60.00</p>
                                 <a href="product_details.php" class="ice-cream-btn">Add to Cart</a>
@@ -389,6 +402,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="No Toppings">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">No Toppings</h5>
                                 <p class="fw-bold">₱60.00</p>
                                 <a href="product_details.php" class="ice-cream-btn">Add to Cart</a>
@@ -399,6 +413,7 @@
                         <div class="card h-100">
                             <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Toppings">
                             <div class="card-body text-center">
+                                <small class="badge badge-primary text-dark" style="background: pink;">For Delivery & Pickup</small><br>
                                 <h5 class="fw-bolder">Toppings</h5>
                                 <p>1 Topping / 2 Toppings / 3 Toppings</p>
                                 <p class="fw-bold">₱70.00 - ₱100.00</p>

@@ -41,6 +41,10 @@
                 <div class="container-fluid mt-5">
                     <!-- DataTales Example -->
                     <div class="card mb-4" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Admin Account List</h6>
+                            <a href="add_customer.php" class="btn btn-primary btn-sm">Add New Customer</a>
+                        </div>
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Customer Account List</h6>
                         </div>
