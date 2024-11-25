@@ -48,6 +48,13 @@
         .cart-item-name {
             font-weight: bold;
         }
+        .bold-dash {
+        display: inline-block;
+        width: 16px; 
+        height: 5px; 
+        background-color: white;
+        border-radius: 2px;
+    }
     </style>
 </head>
 <body>
@@ -66,37 +73,53 @@
         <!-- Cart Table -->
         <table class="table table-bordered">
             <thead>
-                <tr>
-                    <th style="color: white;">Item Name</th>
-                    <th style="color: white;">Quantity</th>
-                    <th style="color: white;">Price per Item (₱)</th>
-                    <th style="color: white;">Add-ons (₱)</th>
-                    <th style="color: white;">Total (₱)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="cart-item-name">Vanilla Ice Cream</td>
-                    <td>2</td>
-                    <td>₱180.00</td>
-                    <td>₱30.00</td>
-                    <td>₱390.00</td>
-                </tr>
-                <tr>
-                    <td class="cart-item-name">Chocolate Sundae</td>
-                    <td>1</td>
-                    <td>₱250.00</td>
-                    <td>₱50.00</td>
-                    <td>₱300.00</td>
-                </tr>
-                <tr>
-                    <td class="cart-item-name">Strawberry Cone</td>
-                    <td>3</td>
-                    <td>₱150.00</td>
-                    <td>₱20.00</td>
-                    <td>₱510.00</td>
-                </tr>
-            </tbody>
+    <tr>
+        <th style="color: white; text-align: center">Item Name</th>
+        <th style="color: white; text-align: center">Quantity</th>
+        <th style="color: white; text-align: center">Price per Item (₱)</th>
+        <th style="color: white; text-align: center">Add-ons (₱)</th>
+        <th style="color: white; text-align: center">Total (₱)</th>
+        <th style="color: white; text-align: center;">Remove</th>
+    </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="cart-item-name">Vanilla Ice Cream</td>
+                <td>2</td>
+                <td>₱180.00</td>
+                <td>₱30.00</td>
+                <td>₱390.00</td>
+                <td class="text-center">
+                     <button class="btn btn-danger btn-sm rounded-circle remove-btn">
+                         <span class="bold-dash"></span>
+                     </button>
+                 </td>
+            </tr>
+            <tr>
+                <td class="cart-item-name">Chocolate Sundae</td>
+                <td>1</td>
+                <td>₱250.00</td>
+                <td>₱50.00</td>
+                <td>₱300.00</td>
+                <td class="text-center">
+                     <button class="btn btn-danger btn-sm rounded-circle remove-btn">
+                         <span class="bold-dash"></span>
+                     </button>
+                 </td>
+            </tr>
+            <tr>
+                <td class="cart-item-name">Strawberry Cone</td>
+                <td>3</td>
+                <td>₱150.00</td>
+                <td>₱20.00</td>
+                <td>₱510.00</td>
+                <td class="text-center">
+                     <button class="btn btn-danger btn-sm rounded-circle remove-btn">
+                         <span class="bold-dash"></span>
+                     </button>
+                 </td>
+            </tr>
+        </tbody>
         </table>
 
         <div class="d-flex justify-content-between">
