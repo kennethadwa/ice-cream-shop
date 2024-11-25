@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Sign Up - Sweet Treats Ice Cream Shop</title>
+    <title>Sign Up - Paparazzi Ice Cream Station</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
     <!-- Google Fonts -->
@@ -14,7 +14,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS for Ice Cream Shop theme -->
     <style>
-        /* Custom Ice Cream Shop theme */
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb); /* Soft pastel gradient */
@@ -78,7 +77,6 @@
     </style>
 </head>
 <body>
-
     <!-- Sign Up Form -->
     <div class="signup-form-container">
         <h1 class="text-center">Sign Up</h1>
@@ -87,7 +85,7 @@
             Already have an account? <a href="login.php" class="forgot-password-link" style="color: blue;">Login</a>
         </div>
         <br>
-        <form action="signup.php" method="POST">
+        <form action="auth_signup.php" method="POST">
             <div class="row">
                 <!-- First Name input -->
                 <div class="col-md-6">
@@ -110,11 +108,10 @@
                 <!-- Contact input -->
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <label class="form-label" for="address">Contact No.</label>
-                        <input type="number" id="address" name="address" class="form-control" required />
+                        <label class="form-label" for="contact">Contact No.</label>
+                        <input type="number" id="contact" name="contact" class="form-control" required />
                     </div>
                 </div>
-    
 
                 <!-- Address input -->
                 <div class="col-md-6">
@@ -138,6 +135,5 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

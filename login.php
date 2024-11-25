@@ -91,7 +91,7 @@
           Don't have an account? <a href="signup.php" class="forgot-password-link" style="color: blue;">Sign Up</a>
         </div>
         <br>
-        <form action="login.php" method="POST">
+        <form action="auth_login.php" method="POST">
             <!-- Email input -->
             <div class="form-outline">
                 <label class="form-label" for="email">Email address</label>
