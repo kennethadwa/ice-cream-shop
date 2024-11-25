@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'connection.php';
+require 'connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -24,8 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $user['email'];
             $_SESSION['account_type'] = $user['account_type'];
 
-            if($user['account_type'] == 3) {
-                header("Location: customer/index.php");
+            // Redirect based on account type
+            if ($user['account_type'] == 1) {
+                header("Location: index.php");
+            } elseif ($user['account_type'] == 2) {
+                header("Location: index.php");
             }
             exit;
         } else {

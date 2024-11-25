@@ -1,149 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Ice Cream Shop - Admin Login</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Login - Sweet Treats Ice Cream Shop</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for Ice Cream Shop theme -->
     <style>
+        /* Custom Ice Cream Shop theme */
         body {
-            background: linear-gradient(135deg, #fcd1d1, #ffe5d9, #ffedd8);
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .bg-gradient-primary {
-            background-color: #ffe5d9 !important;
-            background-image: none;
+        h1, h2 {
+            font-family: 'Pacifico', cursive;
+            color: #ff6f61;
         }
 
-        .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        .form-control {
+            border-radius: 50px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #f1c6a4; 
+        }
+
+        .form-outline {
+            margin-bottom: 20px;
         }
 
         .btn-primary {
-            background-color: #ff7eb9;
+            background-color: #ff9a8b; 
+            border-radius: 50px;
+            font-size: 1.2rem;
+            padding: 10px 20px;
             border: none;
+            width: 100%;
         }
 
         .btn-primary:hover {
-            background-color: #ff6fa0;
+            background-color: #ff6f61; 
         }
 
-        .btn-google {
-            background-color: #ffb400;
+        .form-check-label {
+            color: #ff9a8b; 
         }
 
-        .btn-google:hover {
-            background-color: #e5a100;
+        .form-check-input {
+            border-radius: 50%;
         }
 
-        .btn-facebook {
-            background-color: #86a8e7;
+        .login-form-container {
+            border-radius: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 0 15px;
+            background: #ffffff; 
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
         }
 
-        .btn-facebook:hover {
-            background-color: #7696d1;
+        .forgot-password-link {
+            color: #ff9a8b; 
         }
 
-        .h4 {
-            color: #ff7eb9;
-        }
-
-        .text-gray-900 {
-            color: #393e46 !important;
-        }
-
-        .bg-login-image {
-            background: url('path-to-ice-cream-image.jpg') center center / cover no-repeat;
+        .forgot-password-link:hover {
+            text-decoration: underline;
         }
     </style>
-
 </head>
+<body>
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome to the Ice Cream Shop!</h1>
-                                    </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                        <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Login Form -->
+    <div class="login-form-container">
+        <h1 class="text-center">Paparazzi Admin</h1>
+        <br>
+        <div class="col text-center">
+          Don't have an account? <a href="signup.php" class="forgot-password-link" style="color: blue;">Sign Up</a>
+        </div>
+        <br>
+        <form action="auth_login.php" method="POST">
+            <!-- Email input -->
+            <div class="form-outline">
+                <label class="form-label" for="email">Email address</label>
+                <input type="email" id="email" name="email" class="form-control" required />
             </div>
 
-        </div>
+            <!-- Password input -->
+            <div class="form-outline">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required />
+            </div>
 
+            <!-- Remember me checkbox and Forgot password link -->
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-start">
+                    <div class="form-check">
+                        <a href="#" class="forgot-password-link" style="color: blue;">Forgot password?</a>
+                    </div>
+                </div>        
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
