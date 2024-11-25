@@ -1,8 +1,8 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require '../vendor/autoload.php';
-require '../connection.php'; 
+require 'vendor/autoload.php';
+require 'connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];

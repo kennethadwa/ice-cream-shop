@@ -108,7 +108,7 @@
             <div class="row mb-4">
                 <div class="col d-flex justify-content-start">
                     <div class="form-check">
-                        <a href="#" class="forgot-password-link" style="color: blue;">Forgot password?</a>
+                        <a href="forgot_password.php" class="forgot-password-link" style="color: blue;">Forgot password?</a>
                     </div>
                 </div>        
             </div>
