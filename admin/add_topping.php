@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_topping'])) {
     $sql = "INSERT INTO toppings (topping_name, additional_price) VALUES ('$topping_name', '$additional_price')";
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Topping added successfully!');</script>";
+        echo "<script>window.location.href='manage_toppings.php';</script>";
     } else {
         echo "<script>alert('Error adding topping: " . mysqli_error($conn) . "');</script>";
     }
@@ -51,6 +52,10 @@ $total_pages = ceil($total_toppings / $limit);
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
+        #content {
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+        }
+
         .list-group-item {
             margin-bottom: 15px;
         }
@@ -80,60 +85,25 @@ $total_pages = ceil($total_toppings / $limit);
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid mt-5">
-    <div class="row">
-        <!-- Left Side: Add Topping Form -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px;">
-                    <form method="POST" action="manage_topping.php">
-                        <div class="form-group">
-                            <label for="toppingName">Topping Name</label>
-                            <input type="text" class="form-control" id="toppingName" name="topping_name" placeholder="Enter topping name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="additionalPrice">Additional Price</label>
-                            <input type="number" class="form-control" id="additionalPrice" name="additional_price" required>
-                        </div>
-                        <button type="submit" name="add_topping" class="btn btn-block mt-2" style="background: #FF204E; color: white;">Add Topping</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Side: Display All Toppings -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px;">
-                    <ul class="list-group">
-                        <?php if (mysqli_num_rows($result_toppings) > 0): ?>
-                            <?php while ($row = mysqli_fetch_assoc($result_toppings)): ?>
-                                <li class="list-group-item">
-                                    <strong><?= htmlspecialchars($row['topping_name']) ?></strong>
-                                    <p>Additional Price: ₱<?= number_format($row['additional_price'], 2) ?></p>
-                                    <a href="edit_topping.php?topping_id=<?= $row['topping_id'] ?>" class="btn btn-sm" style="background: green; color: white;">Edit</a>
-                                    <a href="delete_topping.php?topping_id=<?= $row['topping_id'] ?>" class="btn btn-sm" style="background: red; color: white;">Delete</a>
-                                </li>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <p>No toppings available.</p>
-                        <?php endif; ?>
-                    </ul>
-                    <nav>
-                        <ul class="pagination justify-content-center">
-                            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                                <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
-                                    <a class="page-link" href="manage_topping.php?page=<?= $i ?>"><?= $i ?></a>
-                                </li>
-                            <?php endfor; ?>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <!-- /.container-fluid -->
+                  <div class="row d-flex justify-content-center">
+                      <!-- Left Side: Add Topping Form -->
+                      <div class="col-md-6">
+                          <div class="card">
+                              <div class="card-body" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border-radius: 10px;">
+                                  <form method="POST" action="add_topping.php">
+                              <div class="form-group">
+                                  <label for="toppingName">Topping Name</label>
+                                  <input type="text" class="form-control" id="toppingName" name="topping_name" placeholder="Enter topping name" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="additionalPrice">Additional Price</label>
+                                  <input type="number" class="form-control" id="additionalPrice" name="additional_price" required>
+                              </div>
+                              <button type="submit" name="add_topping" class="btn btn-block mt-2" style="background: #FF204E; color: white;">Add Topping</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
             </div>
             <!-- End of Main Content -->
         </div>

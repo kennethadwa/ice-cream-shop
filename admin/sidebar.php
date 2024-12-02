@@ -61,9 +61,9 @@
                 <div id="collapseTwo" class="core collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
                     <div class="core py-2 collapse-inner rounded" style="background-color: transparent;">
                         <a class="collapse-item" href="manage_products.php" style="color: white;">Manage Products</a>
-                        <a class="collapse-item" href="manage_size.php" style="color: white;">Manage Size</a>
+                        <a class="collapse-item" href="manage_sizes.php" style="color: white;">Manage Sizes</a>
                         <a class="collapse-item" href="manage_dips.php" style="color: white;">Manage Dips</a>
-                        <a class="collapse-item" href="manage_topping.php" style="color: white;">Manage Topping</a>
+                        <a class="collapse-item" href="manage_toppings.php" style="color: white;">Manage Toppings</a>
                     </div>
                 </div>
             </li>

@@ -84,33 +84,32 @@ $result = mysqli_query($conn, $query);
                                                    <th>Image</th>
                                                    <th>Order Type</th>
                                                    <th>Category</th>
-                                                   <th>Best Seller</th>
-                                                   <th>Created At</th>
-                                                   <th>Updated At</th>
+                                                   <th class="d-flex justify-content-center">Action</th>
                                                </tr>
                                            </thead>
                                            <tbody>
-                                               <?php
-                                               if (mysqli_num_rows($result) > 0) {
-                                                   while ($row = mysqli_fetch_assoc($result)) {
-                                                       echo "<tr>";
-                                                       echo "<td>" . htmlspecialchars($row['product_id']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['description']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['price']) . "</td>";
-                                                       echo "<td><img src='" . htmlspecialchars($row['image_url']) . "' alt='Product Image' class='img-thumbnail' width='50'></td>";
-                                                       echo "<td>" . htmlspecialchars($row['order_type']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['category_name']) . "</td>";
-                                                       echo "<td>" . ($row['best_seller'] ? "Yes" : "No") . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['updated_at']) . "</td>";
-                                                       echo "</tr>";
-                                                   }
-                                               } else {
-                                                   echo "<tr><td colspan='10' class='text-center'>No products found</td></tr>";
-                                               }
-                                               ?>
-                                           </tbody>
+                                                <?php
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo "<tr>";
+                                                        echo "<td>" . htmlspecialchars($row['product_id']) . "</td>";
+                                                        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                                                        echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+                                                        echo "<td>" . htmlspecialchars($row['price']) . "</td>";
+                                                        echo "<td><img src='" . htmlspecialchars($row['image_url']) . "' alt='Product Image' class='img-thumbnail' width='50'></td>";
+                                                        echo "<td>" . htmlspecialchars($row['order_type']) . "</td>";
+                                                        echo "<td>" . htmlspecialchars($row['category_name']) . "</td>";
+                                                        echo "<td class='d-flex flex-col'>";
+                                                        echo "<a href='edit_product.php?id=" . $row['product_id'] . "' class='btn btn-warning btn-sm'><i class='fas fa-edit'></i> Edit</a> &nbsp; ";
+                                                        echo "<a href='delete_product.php?id=" . $row['product_id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this product?\");'><i class='fas fa-trash'></i> Delete</a>";
+                                                        echo "</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                } else {
+                                                    echo "<tr><td colspan='11' class='text-center'>No products found</td></tr>";
+                                                }
+                                                ?>
+                                            </tbody>
                                        </table>
                                    </div>
                                </div>

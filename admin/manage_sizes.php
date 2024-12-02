@@ -60,6 +60,7 @@ $result = mysqli_query($conn, $query);
                                                    <th>Size ID</th>
                                                    <th>Size Name</th>
                                                    <th>Additional Price</th>
+                                                   <th class="d-flex justify-content-center">Actions</th>
                                                </tr>
                                            </thead>
                                            <tbody>
@@ -70,10 +71,19 @@ $result = mysqli_query($conn, $query);
                                                        echo "<td>" . htmlspecialchars($row['size_id']) . "</td>";
                                                        echo "<td>" . htmlspecialchars($row['size_name']) . "</td>";
                                                        echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
+                                                       echo "<td class='d-flex justify-content-center'>
+                                                               <a href='edit_size.php?size_id=" . $row['size_id'] . "' class='btn btn-warning btn-sm'>
+                                                                   <i class='fas fa-edit'></i> Edit
+                                                               </a>
+                                                               &nbsp;
+                                                               <a href='delete_size.php?size_id=" . $row['size_id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this size?\")'>
+                                                                   <i class='fas fa-trash'></i> Delete
+                                                               </a>
+                                                           </td>";
                                                        echo "</tr>";
                                                    }
                                                } else {
-                                                   echo "<tr><td colspan='3' class='text-center'>No sizes found</td></tr>";
+                                                   echo "<tr><td colspan='4' class='text-center'>No sizes found</td></tr>";
                                                }
                                                ?>
                                            </tbody>
@@ -85,7 +95,7 @@ $result = mysqli_query($conn, $query);
                                        <ul class="pagination justify-content-center">
                                            <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                                                <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
-                                                   <a class="page-link" href="view_size.php?page=<?php echo $i; ?>">
+                                                   <a class="page-link" href="manage_sizes.php?page=<?php echo $i; ?>">
                                                        <?php echo $i; ?>
                                                    </a>
                                                </li>
