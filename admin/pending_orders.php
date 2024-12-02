@@ -48,6 +48,12 @@ $result = $conn->query($query);
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        #content {
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -114,7 +120,7 @@ $result = $conn->query($query);
                                                 echo "<td><span class='badge badge-" . ($row['order_type'] == 'For Delivery' ? 'success' : 'primary') . "'>{$row['order_type']}</span></td>";
                                                 echo "<td>{$row['pickup_time']}</td>";
                                                 echo "<td><span class='badge badge-danger'>{$row['status']}</span></td>";
-                                                echo "<td><a href='edit_pending_order.php?id={$row['transaction_id']}' class='btn btn-primary btn-sm'>Update</a></td>";
+                                                echo "<td><a href='edit_pending_order.php?transaction_id={$row['transaction_id']}' class='btn btn-primary btn-sm'>Update</a></td>";
                                                 echo "</tr>";
                                             }
                                         } else {
@@ -135,19 +141,25 @@ $result = $conn->query($query);
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript -->
+    <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages -->
+    <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

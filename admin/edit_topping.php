@@ -67,6 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
+     
+        #content {
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+        }
+  
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fc;
