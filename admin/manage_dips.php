@@ -74,21 +74,25 @@ if (isset($_GET['status']) && $_GET['status'] == 'deleted') {
                                                </tr>
                                            </thead>
                                            <tbody>
-                                               <?php
-                                               if (mysqli_num_rows($result) > 0) {
-                                                   while ($row = mysqli_fetch_assoc($result)) {
-                                                       echo "<tr>";
-                                                       echo "<td>" . htmlspecialchars($row['dip_id']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['dip_type']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
-                                                       echo "<td class='d-flex justify-content-center'><a href='delete_dip.php?id=" . $row['dip_id'] . "' class='btn btn-danger btn-sm'>Delete</a></td>";
-                                                       echo "</tr>";
-                                                   }
-                                               } else {
-                                                   echo "<tr><td colspan='4' class='text-center'>No dips found</td></tr>";
-                                               }
-                                               ?>
-                                           </tbody>
+                                                  <?php
+                                                  if (mysqli_num_rows($result) > 0) {
+                                                      while ($row = mysqli_fetch_assoc($result)) {
+                                                          echo "<tr>";
+                                                          echo "<td>" . htmlspecialchars($row['dip_id']) . "</td>";
+                                                          echo "<td>" . htmlspecialchars($row['dip_type']) . "</td>";
+                                                          echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
+                                                          echo "<td class='d-flex justify-content-center'>
+                                                                  <a href='edit_dip.php?dip_id=" . $row['dip_id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                                                  &nbsp;
+                                                                  <a href='delete_dip.php?id=" . $row['dip_id'] . "' class='btn btn-danger btn-sm'>Delete</a>
+                                                                </td>";
+                                                          echo "</tr>";
+                                                      }
+                                                  } else {
+                                                      echo "<tr><td colspan='4' class='text-center'>No dips found</td></tr>";
+                                                  }
+                                                  ?>
+                                              </tbody>
                                        </table>
                                    </div>
                                </div>

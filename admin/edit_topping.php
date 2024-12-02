@@ -22,11 +22,11 @@ if (isset($_GET['topping_id'])) {
     $topping = $result->fetch_assoc();
 
     if (!$topping) {
-        echo "<script>alert('Topping not found!'); window.location.href='manage_topping.php';</script>";
+        echo "<script>alert('Topping not found!'); window.location.href='manage_toppings.php';</script>";
         exit;
     }
 } else {
-    echo "<script>alert('No topping selected!'); window.location.href='manage_topping.php';</script>";
+    echo "<script>alert('No topping selected!'); window.location.href='manage_toppings.php';</script>";
     exit;
 }
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sdi", $topping_name, $additional_price, $topping_id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Topping updated successfully!'); window.location.href='manage_topping.php';</script>";
+        echo "<script>alert('Topping updated successfully!'); window.location.href='manage_toppings.php';</script>";
     } else {
         echo "<script>alert('Failed to update topping!');</script>";
     }

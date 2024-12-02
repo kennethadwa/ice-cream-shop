@@ -1,16 +1,17 @@
 <?php
-session_start();
+
 include('../connection.php');
 
-// Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit;
+session_start();
+
+if (!isset($_SESSION['user_id']) || ($_SESSION['account_type'] != 1 && $_SESSION['account_type'] != 2)) {
+    header('Location: login.php');
+    exit();
 }
 
-// Fetch pending orders from the transactions table along with user details
 $query = "
     SELECT 
+        t.transaction_id,
         CONCAT(u.first_name, ' ', u.last_name) AS full_name, 
         u.address AS delivery_address, 
         t.product_name, 

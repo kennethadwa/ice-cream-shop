@@ -74,23 +74,25 @@ if (isset($_GET['status']) && $_GET['status'] == 'deleted') {
                                                </tr>
                                            </thead>
                                            <tbody>
-                                               <?php
-                                               if (mysqli_num_rows($result) > 0) {
-                                                   while ($row = mysqli_fetch_assoc($result)) {
-                                                       echo "<tr>";
-                                                       echo "<td>" . htmlspecialchars($row['topping_id']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['topping_name']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
-                                                       echo "<td class='d-flex justify-content-center'>
-                                                               <a href='delete_topping.php?id=" . $row['topping_id'] . "' class='btn btn-danger btn-sm'>Delete</a>
-                                                             </td>";
-                                                       echo "</tr>";
-                                                   }
-                                               } else {
-                                                   echo "<tr><td colspan='4' class='text-center'>No toppings found</td></tr>";
-                                               }
-                                               ?>
-                                           </tbody>
+                                              <?php
+                                              if (mysqli_num_rows($result) > 0) {
+                                                  while ($row = mysqli_fetch_assoc($result)) {
+                                                      echo "<tr>";
+                                                      echo "<td>" . htmlspecialchars($row['topping_id']) . "</td>";
+                                                      echo "<td>" . htmlspecialchars($row['topping_name']) . "</td>";
+                                                      echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
+                                                      echo "<td class='d-flex justify-content-center'>
+                                                              <a href='edit_topping.php?topping_id=" . $row['topping_id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                                              &nbsp;
+                                                              <a href='delete_topping.php?id=" . $row['topping_id'] . "' class='btn btn-danger btn-sm'>Delete</a>
+                                                           </td>";
+                                                      echo "</tr>";
+                                                  }
+                                              } else {
+                                                  echo "<tr><td colspan='4' class='text-center'>No toppings found</td></tr>";
+                                              }
+                                              ?>
+                                          </tbody>
                                        </table>
                                    </div>
                                </div>
