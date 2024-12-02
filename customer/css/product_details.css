@@ -1,0 +1,81 @@
+body {
+  background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+}
+
+.btn {
+  border-radius: 50px;
+  padding: 8px 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* No Dip button */
+.product-btn {
+  background: darkblue;
+  color: white;
+}
+
+.product-btn:hover {
+  background: blue;
+  color: white;
+}
+
+/* Ice Cream Theme Header */
+h1.display-5.fw-bolder {
+  font-family: 'Pacifico', cursive;
+  color: #FF6F61;
+}
+
+h2.fw-bolder {
+  font-family: 'Cookie', cursive;
+  color: #FF6F61;
+}
+
+/* Product Description */
+p.lead {
+  font-family: 'Roboto Slab', serif;
+  color: #555;
+}
+
+/* Card Design */
+.card {
+  border: 1px solid #FFB6C1;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+}
+
+
+.bg-light {
+  background-color: #FFF0F5;
+}
+
+
+#inputQuantity {
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #FFB6C1;
+  max-width: 60px;
+}
+
+.checkbox-label,
+.radio-label {
+  font-size: 1rem;
+  color: black;
+  margin-right: 20px;
+}
+
+.checkbox-input,
+.radio-input {
+  margin-right: 10px;
+}

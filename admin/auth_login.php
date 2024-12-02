@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'connection.php'; 
+require '../connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -24,9 +24,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $user['email'];
             $_SESSION['account_type'] = $user['account_type'];
 
+            // Check if account_type is not 1 or 2
+            if ($user['account_type'] != 1 && $user['account_type'] != 2) {
+                echo "<script>
+                    alert('You are not an admin.');
+                    window.location.href = 'login.php';
+                </script>";
+                exit;
+            }
+
             // Redirect based on account type
             if ($user['account_type'] == 1) {
-                header("Location: index.php");
+                header("Location: index.php"); 
             } elseif ($user['account_type'] == 2) {
                 header("Location: index.php");
             }

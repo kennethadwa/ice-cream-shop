@@ -1,3 +1,34 @@
+<?php
+session_start();
+include('../connection.php');
+
+// Check if user is logged in and is an admin
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit;
+}
+
+// Fetch pending orders from the transactions table along with user details
+$query = "
+    SELECT 
+        CONCAT(u.first_name, ' ', u.last_name) AS full_name, 
+        u.address AS delivery_address, 
+        t.product_name, 
+        t.payment_method, 
+        t.order_type, 
+        t.total_amount, 
+        t.pickup_time, 
+        t.status
+    FROM 
+        transactions t
+    JOIN 
+        users u ON t.user_id = u.user_id
+    WHERE 
+        t.status = 'pending'
+";
+$result = $conn->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,30 +101,25 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td>123 Main St</td>
-                                            <td>Vanilla Ice Cream</td>
-                                            <td>₱55.00</td>
-                                            <td><span class="badge badge-success">For Delivery</span></td>
-                                            <td><span>N/A</span></td>
-                                            <td><span class="badge badge-danger">Pending</span></td>
-                                            <td>
-                                                <a href="edit_pending_order.php" class="btn btn-primary btn-sm">Update</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jane Smith</td>
-                                            <td>456 Oak St</td>
-                                            <td>Chocolate Ice Cream</td>
-                                            <td>₱56.50</td>
-                                            <td><span class="badge badge-primary">For Pickup</span></td>
-                                            <td>2024-11-20 15:00</td>
-                                            <td><span class="badge badge-danger">Pending</span></td>
-                                            <td>
-                                                <a href="edit_pending_order.php" class="btn btn-primary btn-sm">Update</a>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        // Check if any pending orders exist
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>{$row['full_name']}</td>";
+                                                echo "<td>{$row['delivery_address']}</td>";
+                                                echo "<td>{$row['product_name']}</td>";
+                                                echo "<td>₱" . number_format($row['total_amount'], 2) . "</td>";
+                                                echo "<td><span class='badge badge-" . ($row['order_type'] == 'For Delivery' ? 'success' : 'primary') . "'>{$row['order_type']}</span></td>";
+                                                echo "<td>{$row['pickup_time']}</td>";
+                                                echo "<td><span class='badge badge-danger'>{$row['status']}</span></td>";
+                                                echo "<td><a href='edit_pending_order.php?id={$row['transaction_id']}' class='btn btn-primary btn-sm'>Update</a></td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='8' class='text-center'>No pending orders found.</td></tr>";
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -124,3 +150,8 @@
 </body>
 
 </html>
+
+<?php
+// Close the database connection
+$conn->close();
+?>

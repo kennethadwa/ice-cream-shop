@@ -15,15 +15,20 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
 // Fetch total records count
-$totalQuery = "SELECT COUNT(*) AS total FROM sizes";
+$totalQuery = "SELECT COUNT(*) AS total FROM dips";
 $totalResult = mysqli_query($conn, $totalQuery);
 $totalRow = mysqli_fetch_assoc($totalResult);
 $totalRecords = $totalRow['total'];
 $totalPages = ceil($totalRecords / $limit);
 
-// Fetch paginated sizes
-$query = "SELECT size_id, size_name, additional_price FROM sizes LIMIT $start, $limit";
+// Fetch paginated dips
+$query = "SELECT dip_id, dip_type, additional_price FROM dips LIMIT $start, $limit";
 $result = mysqli_query($conn, $query);
+
+// Check for successful deletion
+if (isset($_GET['status']) && $_GET['status'] == 'deleted') {
+    echo "<script>alert('Dip deleted successfully');</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +37,14 @@ $result = mysqli_query($conn, $query);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sizes - Paparazzi</title>
+    <title>Dips - Paparazzi</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        #content {
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+        }
+    </style>
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -47,9 +57,9 @@ $result = mysqli_query($conn, $query);
                         <div class="col-md-12">
                            <div class="card shadow mb-4">
                                <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                                   <h6 class="m-0 font-weight-bold text-primary">Sizes List</h6>
-                                   <a href="add_size.php" class="btn btn-primary btn-sm">
-                                       <i class="fas fa-plus"></i> Add New Size
+                                   <h6 class="m-0 font-weight-bold text-primary">Dips List</h6>
+                                   <a href="add_dip.php" class="btn btn-primary btn-sm">
+                                       <i class="fas fa-plus"></i> Add New Dip
                                    </a>
                                </div>
                                <div class="card-body">
@@ -57,9 +67,10 @@ $result = mysqli_query($conn, $query);
                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                            <thead>
                                                <tr>
-                                                   <th>Size ID</th>
-                                                   <th>Size Name</th>
+                                                   <th>Dip ID</th>
+                                                   <th>Dip Type</th>
                                                    <th>Additional Price</th>
+                                                   <th class='d-flex justify-content-center'>Actions</th>
                                                </tr>
                                            </thead>
                                            <tbody>
@@ -67,13 +78,14 @@ $result = mysqli_query($conn, $query);
                                                if (mysqli_num_rows($result) > 0) {
                                                    while ($row = mysqli_fetch_assoc($result)) {
                                                        echo "<tr>";
-                                                       echo "<td>" . htmlspecialchars($row['size_id']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['size_name']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['dip_id']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['dip_type']) . "</td>";
                                                        echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
+                                                       echo "<td class='d-flex justify-content-center'><a href='delete_dip.php?id=" . $row['dip_id'] . "' class='btn btn-danger btn-sm'>Delete</a></td>";
                                                        echo "</tr>";
                                                    }
                                                } else {
-                                                   echo "<tr><td colspan='3' class='text-center'>No sizes found</td></tr>";
+                                                   echo "<tr><td colspan='4' class='text-center'>No dips found</td></tr>";
                                                }
                                                ?>
                                            </tbody>
@@ -85,7 +97,7 @@ $result = mysqli_query($conn, $query);
                                        <ul class="pagination justify-content-center">
                                            <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                                                <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
-                                                   <a class="page-link" href="view_size.php?page=<?php echo $i; ?>">
+                                                   <a class="page-link" href="view_dips.php?page=<?php echo $i; ?>">
                                                        <?php echo $i; ?>
                                                    </a>
                                                </li>

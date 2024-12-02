@@ -1,3 +1,28 @@
+<?php
+
+require '../connection.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+
+$user_id = $_SESSION['user_id'];
+
+// Fetch the user's image from the database
+$sqls = "SELECT img FROM users WHERE user_id = ?";
+$stmts = $conn->prepare($sqls);
+$stmts->bind_param("i", $user_id);
+$stmts->execute();
+$results = $stmts->get_result();
+$user = $results->fetch_assoc();
+
+// Set the image path, default to a generic image if none exists
+$profile_image = $user['img'] ? $user['img'] : 'https://img.icons8.com/ios-filled/50/user.png'; // Default image if no profile image
+?>
+
+
 <style>
     .navbar {
         background-color: white;
@@ -76,23 +101,23 @@
         <br>
 
         <!-- User Account Dropdown -->
-           <div class="dropdown" style="margin-left: 20px;">
-               <button class="btn btn-outline-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                   <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/user.png" alt="user"/>
-               </button>
-               <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                   <li>
-                       <a class="dropdown-item" href="profile.php">
-                           <i class="bi bi-person-circle me-2"></i> My Account
-                       </a>
-                   </li>
-                   <li>
-                       <a class="dropdown-item" href="logout.php">
-                           <i class="bi bi-box-arrow-right me-2"></i> Log Out
-                       </a>
-                   </li>
-               </ul>
-           </div>
+<div class="dropdown" style="margin-left: 20px;">
+    <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: transparent; border:none;">
+        <img width="45" height="45" src="<?php echo $profile_image; ?>" alt="user" style="border-radius: 50%; border: 1px solid black; box-shadow: 1px 1px 5px black;"/>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+        <li>
+            <a class="dropdown-item" href="profile.php">
+                <i class="bi bi-person-circle me-2"></i> My Account
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="logout.php">
+                <i class="bi bi-box-arrow-right me-2"></i> Log Out
+            </a>
+        </li>
+    </ul>
+</div>
     </div>
 </nav>
 

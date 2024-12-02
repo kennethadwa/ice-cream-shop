@@ -1,0 +1,53 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  background: #fbe9e7;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #ff6b81;
+  margin-bottom: 30px;
+}
+
+.table {
+  background-color: #fce4ec;
+  border: 1px solid #ff6b81;
+}
+
+.table th,
+.table td {
+  color: black;
+}
+
+.table thead {
+  background-color: #ff6b81;
+  color: white;
+}
+
+.btn-success {
+  background-color: #ff6b81;
+  border-color: #ff6b81;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.d-flex h3 {
+  font-size: 1.5rem;
+  color: #f44336;
+}
+
+.alert-warning {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.cart-item-name {
+  font-weight: bold;
+}
+
+.bold-dash {
+  display: inline-block;
+  width: 16px;
+  height: 5px;
+  background-color: white;
+  border-radius: 2px;
+}

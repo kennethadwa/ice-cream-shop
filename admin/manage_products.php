@@ -10,19 +10,34 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['account_type'] != 1 && $_SESSION
 }
 
 // Pagination logic
-$limit = 8; // Number of records per page
+$limit = 3; // Number of records per page
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
 // Fetch total records count
-$totalQuery = "SELECT COUNT(*) AS total FROM sizes";
+$totalQuery = "SELECT COUNT(*) AS total FROM products";
 $totalResult = mysqli_query($conn, $totalQuery);
 $totalRow = mysqli_fetch_assoc($totalResult);
 $totalRecords = $totalRow['total'];
 $totalPages = ceil($totalRecords / $limit);
 
-// Fetch paginated sizes
-$query = "SELECT size_id, size_name, additional_price FROM sizes LIMIT $start, $limit";
+// Fetch paginated products with JOINs
+$query = "
+    SELECT 
+        p.product_id, 
+        p.name, 
+        p.description, 
+        p.price, 
+        p.image_url, 
+        ot.order_type, 
+        c.category_name, 
+        p.best_seller, 
+        p.created_at, 
+        p.updated_at
+    FROM products p
+    LEFT JOIN order_types ot ON p.order_id = ot.order_id
+    LEFT JOIN categories c ON p.category_id = c.category_id
+    LIMIT $start, $limit";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -32,9 +47,14 @@ $result = mysqli_query($conn, $query);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sizes - Paparazzi</title>
+    <title>Ice Cream - Paparazzi</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        #content{
+          background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+        }
+    </style>
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -47,9 +67,9 @@ $result = mysqli_query($conn, $query);
                         <div class="col-md-12">
                            <div class="card shadow mb-4">
                                <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                                   <h6 class="m-0 font-weight-bold text-primary">Sizes List</h6>
-                                   <a href="add_size.php" class="btn btn-primary btn-sm">
-                                       <i class="fas fa-plus"></i> Add New Size
+                                   <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
+                                   <a href="add_product.php" class="btn btn-primary btn-sm">
+                                       <i class="fas fa-plus"></i> Add New Product
                                    </a>
                                </div>
                                <div class="card-body">
@@ -57,9 +77,16 @@ $result = mysqli_query($conn, $query);
                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                            <thead>
                                                <tr>
-                                                   <th>Size ID</th>
-                                                   <th>Size Name</th>
-                                                   <th>Additional Price</th>
+                                                   <th>Product ID</th>
+                                                   <th>Name</th>
+                                                   <th>Description</th>
+                                                   <th>Price</th>
+                                                   <th>Image</th>
+                                                   <th>Order Type</th>
+                                                   <th>Category</th>
+                                                   <th>Best Seller</th>
+                                                   <th>Created At</th>
+                                                   <th>Updated At</th>
                                                </tr>
                                            </thead>
                                            <tbody>
@@ -67,13 +94,20 @@ $result = mysqli_query($conn, $query);
                                                if (mysqli_num_rows($result) > 0) {
                                                    while ($row = mysqli_fetch_assoc($result)) {
                                                        echo "<tr>";
-                                                       echo "<td>" . htmlspecialchars($row['size_id']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars($row['size_name']) . "</td>";
-                                                       echo "<td>" . htmlspecialchars(number_format($row['additional_price'], 2)) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['product_id']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['price']) . "</td>";
+                                                       echo "<td><img src='" . htmlspecialchars($row['image_url']) . "' alt='Product Image' class='img-thumbnail' width='50'></td>";
+                                                       echo "<td>" . htmlspecialchars($row['order_type']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['category_name']) . "</td>";
+                                                       echo "<td>" . ($row['best_seller'] ? "Yes" : "No") . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                                                       echo "<td>" . htmlspecialchars($row['updated_at']) . "</td>";
                                                        echo "</tr>";
                                                    }
                                                } else {
-                                                   echo "<tr><td colspan='3' class='text-center'>No sizes found</td></tr>";
+                                                   echo "<tr><td colspan='10' class='text-center'>No products found</td></tr>";
                                                }
                                                ?>
                                            </tbody>
@@ -85,7 +119,7 @@ $result = mysqli_query($conn, $query);
                                        <ul class="pagination justify-content-center">
                                            <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                                                <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
-                                                   <a class="page-link" href="view_size.php?page=<?php echo $i; ?>">
+                                                   <a class="page-link" href="manage_products.php?page=<?php echo $i; ?>">
                                                        <?php echo $i; ?>
                                                    </a>
                                                </li>

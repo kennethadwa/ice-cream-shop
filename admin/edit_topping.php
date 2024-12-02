@@ -1,3 +1,54 @@
+<?php
+// Database connection
+include('../connection.php');
+
+session_start();
+
+if (!isset($_SESSION['user_id']) || ($_SESSION['account_type'] != 1 && $_SESSION['account_type'] != 2)) {
+    header('Location: login.php');
+    exit();
+}
+
+// Check if topping_id is provided in the URL
+if (isset($_GET['topping_id'])) {
+    $topping_id = $_GET['topping_id'];
+
+    // Fetch the current topping details
+    $query = "SELECT * FROM toppings WHERE topping_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $topping_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $topping = $result->fetch_assoc();
+
+    if (!$topping) {
+        echo "<script>alert('Topping not found!'); window.location.href='manage_topping.php';</script>";
+        exit;
+    }
+} else {
+    echo "<script>alert('No topping selected!'); window.location.href='manage_topping.php';</script>";
+    exit;
+}
+
+// Update the topping on form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $topping_name = $_POST['topping_name'];
+    $additional_price = $_POST['additional_price'];
+
+    // Update query
+    $update_query = "UPDATE toppings SET topping_name = ?, additional_price = ? WHERE topping_id = ?";
+    $stmt = $conn->prepare($update_query);
+    $stmt->bind_param("sdi", $topping_name, $additional_price, $topping_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Topping updated successfully!'); window.location.href='manage_topping.php';</script>";
+    } else {
+        echo "<script>alert('Failed to update topping!');</script>";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,23 +117,19 @@
                                    <div class="col-md-6">
                                        <div class="card p-4">
                                            <h4 class="text-center mb-4">Edit Topping</h4>
-                                           <form>
-                                               <div class="mb-3">
-                                                   <label for="toppingName" class="form-label">Topping Name</label>
-                                                   <input type="text" class="form-control" id="toppingName" placeholder="Enter topping name">
-                                               </div>
-                                               <div class="mb-3">
-                                                   <label for="description" class="form-label">Description</label>
-                                                   <textarea class="form-control" id="description" rows="3"
-                                                       placeholder="Enter description for the topping"></textarea>
-                                               </div>
-                                               <div class="mb-3">
-                                                   <label for="toppingImage" class="form-label">Topping Image</label>
-                                                   <input type="file" class="form-control" id="toppingImage" accept="image/*">
-                                                   <small class="text-muted">Leave blank to keep the current image.</small>
-                                               </div>
-                                               <button type="submit" class="btn btn-update btn-block">Update Topping</button>
-                                           </form>
+                                           <form method="POST">
+                                             <div class="mb-3">
+                                                 <label for="toppingName" class="form-label">Topping Name</label>
+                                                 <input type="text" class="form-control" id="toppingName" name="topping_name" 
+                                                     value="<?php echo htmlspecialchars($topping['topping_name']); ?>" required>
+                                             </div>
+                                             <div class="mb-3">
+                                                 <label for="additionalPrice" class="form-label">Additional Price</label>
+                                                 <input type="number" step="0.01" class="form-control" id="additionalPrice" name="additional_price" 
+                                                     value="<?php echo htmlspecialchars($topping['additional_price']); ?>" required>
+                                             </div>
+                                             <button type="submit" class="btn btn-update btn-block">Update Topping</button>
+                                         </form>
                                        </div>
                                    </div>
                                </div>
