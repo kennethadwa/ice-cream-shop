@@ -11,17 +11,18 @@ if (!isset($_SESSION['user_id'])) {
 include('../connection.php');
 
 // Retrieve POST data
+$user_id = $_SESSION['user_id'];
 $total_amount = $_POST['total_amount'];
 $payment_method = $_POST['payment_method'];
 $order_type = $_POST['order_type'];
-$user_id = $_SESSION['user_id'];
-
+$pickup_time = isset($_POST['pickup_time']) ? $_POST['pickup_time'] : null;
 // Insert the transaction into the database
-$query = "INSERT INTO transactions (user_id, total_amount, payment_method, order_type, transaction_date) 
-          VALUES (?, ?, ?, ?, NOW())";
+$query = "INSERT INTO transactions (user_id, total_amount, payment_method, order_type, pickup_time, transaction_date) 
+          VALUES (?, ?, ?, ?, ?, NOW())";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param("idss", $user_id, $total_amount, $payment_method, $order_type);
+$stmt->bind_param("idsss", $user_id, $total_amount, $payment_method, $order_type, $pickup_time);
+
 
 // Execute the statement
 if ($stmt->execute()) {

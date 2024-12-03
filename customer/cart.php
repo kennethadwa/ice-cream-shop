@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
     }
 
     // Add delivery fee to the total amount
-    $delivery_fee = 100; // Fixed delivery fee
+    $delivery_fee = 80; // Fixed delivery fee
     $total_amount_with_fee = $total_amount + $delivery_fee; 
 
     $cart_empty = empty($cart_items);
@@ -136,7 +136,7 @@ $conn->close();
         </table>
 
         <div class="d-flex justify-content-between">
-            <h3>Total Amount: ₱<?php echo number_format($total_amount, 2) . " + 100 Fee"; ?></h3>
+            <h3>Total Amount: ₱<?php echo number_format($total_amount, 2) . " + 80 Delivery/Reservation Fee"; ?></h3>
             <div>
                 <label for="payment-method" style="font-weight: bold;">Select Payment Method:</label>
                 <br>
@@ -154,8 +154,8 @@ $conn->close();
                 <br>
                 <!-- Pickup Time Input -->
                 <div id="pickup-time-container" style="display: none; margin-top: 10px;">
-                    <label for="pickup-time" style="font-weight: bold;">Pickup Time:</label>
-                    <input type="time" id="pickup-time" name="pickup-time" class="form-control" style="width: 200px;" required>
+                    <label for="pickup_time" style="font-weight: bold;">Pickup Time:</label>
+                    <input type="time" id="pickup_time" name="pickup_time" class="form-control" style="width: 200px;" required>
                 </div>
                 <br>    
                 <div class="d-flex justify-content-end">
@@ -198,7 +198,7 @@ $conn->close();
         document.getElementById('order-type').addEventListener('change', function() {
             var pickupTimeContainer = document.getElementById('pickup-time-container');
             var orderNowButton = document.getElementById('order-now-button');
-            var pickupTimeInput = document.getElementById('pickup-time');
+            var pickupTimeInput = document.getElementById('pickup_time');
 
             if (this.value === 'For Pickup') {
                 pickupTimeContainer.style.display = 'block';
@@ -209,7 +209,7 @@ $conn->close();
             }
         });
 
-        document.getElementById('pickup-time').addEventListener('input', function() {
+        document.getElementById('pickup_time').addEventListener('input', function() {
             var orderNowButton = document.getElementById('order-now-button');
             var orderType = document.getElementById('order-type').value;
 
