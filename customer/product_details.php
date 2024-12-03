@@ -16,10 +16,12 @@ if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
 
     // Fetch product details based on the product_id
-    $query = "SELECT p.product_id, p.name, p.price, p.image_url, p.order_type, p.description, c.category_name
-              FROM products p
-              INNER JOIN categories c ON p.category_id = c.category_id
-              WHERE p.product_id = $product_id";
+    $query = "SELECT p.product_id, p.name, p.price, p.image_url, p.order_id, p.description, 
+                 c.category_name, ot.order_type
+          FROM products p
+          INNER JOIN categories c ON p.category_id = c.category_id
+          INNER JOIN order_types ot ON p.order_id = ot.order_id
+          WHERE p.product_id = $product_id";
 
     $result = mysqli_query($conn, $query);
     
@@ -116,6 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/product_details.css">
 </head>
 <body>
@@ -131,8 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <img class="card-img-top mb-5 mb-md-0" src="<?php echo $product['image_url']; ?>" alt="..." />
                 </div>
                 <div class="col-md-6">
-                    <h1 class="display-5 fw-bolder"><?php echo $product['name']; ?></h1>
-                    <small class="badge badge-primary text-dark"><?php echo $product['order_type']; ?></small><br>
+                    <h1 class="display-5 fw-bolder" style="font-family:'Times New Roman', Times, serif;"><?php echo $product['name']; ?></h1>
                     <p class="fw-bold">₱<?php echo number_format($product['price'], 2); ?></p>
                     <p><strong>Category:</strong> <?php echo $product['category_name']; ?></p>
                     <p><strong>Description:</strong> <?php echo nl2br($product['description']); ?></p>

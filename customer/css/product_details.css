@@ -22,12 +22,12 @@ body {
 
 /* Ice Cream Theme Header */
 h1.display-5.fw-bolder {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Lato';
   color: #FF6F61;
 }
 
 h2.fw-bolder {
-  font-family: 'Cookie', cursive;
+  font-family: 'Cookie';
   color: #FF6F61;
 }
 
