@@ -74,13 +74,13 @@ if ($order_types_result->num_rows > 0) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $payment_method = $_POST['payment_method'];
     $order_type = $_POST['order_type'];
-    $pickup_time = isset($_POST['pickup_time']) ? $_POST['pickup_time'] : null;
+    $pickup_time = isset($_POST['pickup_time']) ? $_POST['pickup_time'] : null;  // Get pickup time if set
     $status = 'Pending';
     $transaction_date = date('Y-m-d H:i:s');
 
     // Insert into transactions table
     $insert_transaction_query = "INSERT INTO transactions (user_id, total_amount, payment_id, order_id, pickup_time, status, transaction_date)
-                              VALUES (?, ?, ?, ?, ?, ?, ?)";
+                                  VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insert_transaction_query);
     
     // Correct the parameter types: "iisiss" for int, string, int, int, string, string, string
@@ -121,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: cart.php");
     exit();
 }
+
 
 // Place $conn->close(); here at the end of the script, after all queries are executed
 $conn->close();
@@ -210,6 +211,7 @@ $conn->close();
                             <option value="<?php echo $order_type['order_id']; ?>">
                                 <?php echo htmlspecialchars($order_type['order_type']); ?>
                             </option>
+
                         <?php endforeach; ?>
                     </select>
 
@@ -232,5 +234,19 @@ $conn->close();
     <!-- Custom JS -->
     <script src="./js/cart.js"></script>
 
+    <script>
+       document.getElementById('order-type').addEventListener('change', function () {
+    var orderType = this.value;
+    var pickupTimeContainer = document.getElementById('pickup-time-container');
+
+    // Check for the correct order type ID for "Pick-Up" (update the value below to match your database)
+    if (orderType == '2') { // Assuming '2' is the ID for 'Pick-Up' order type in the database
+        pickupTimeContainer.style.display = 'block';
+    } else {
+        pickupTimeContainer.style.display = 'none';
+        }
+    });
+
+    </script>
 </body>
 </html>
