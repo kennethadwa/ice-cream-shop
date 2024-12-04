@@ -1,8 +1,9 @@
 <?php
 include('../connection.php');
+
 session_start();
 
-// Ensure the user is logged in and is of the correct account type (account_type = 3)
+
 if (!isset($_SESSION['user_id']) || $_SESSION['account_type'] != 3) {
     header("Location: ../login.php");
     exit;
@@ -78,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
