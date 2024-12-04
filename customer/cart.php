@@ -1,11 +1,12 @@
 <?php
-session_start();
+
 include('../connection.php');
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
+session_start();
+
+if (!isset($_SESSION['account_type']) || $_SESSION['account_type'] != 3) {
     header("Location: ../login.php");
-    exit();
+    exit;
 }
 
 $user_id = $_SESSION['user_id'];

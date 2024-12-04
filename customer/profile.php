@@ -1,32 +1,49 @@
 <?php
-session_start();
 include('../connection.php');
+session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+// Ensure the user is logged in and is of the correct account type (account_type = 3)
+if (!isset($_SESSION['user_id']) || $_SESSION['account_type'] != 3) {
+    header("Location: ../login.php");
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id']; // Get the logged-in user's ID
 
-// Fetch user data from the database
+// Debugging: Check if the session is set
+error_log("User ID from session: " . $user_id);
+
+// Fetch current user data
 $query = "SELECT * FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();  // Fetch user data as associative array
+$user = $result->fetch_assoc();
+
+// Debugging: Check the result
+if ($user) {
+    error_log("User data fetched: " . print_r($user, true));
+} else {
+    error_log("No data found for user ID: " . $user_id);
+}
+
 $stmt->close();
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
-    $address = htmlspecialchars($_POST['address']);
-    $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
+    // Debugging: Log $_POST array to check values
+    error_log(print_r($_POST, true));
 
-    // Check if a profile picture is uploaded
+    // Assign values from POST or use current user values if not set
+    $address = isset($_POST['address']) && !empty($_POST['address']) ? htmlspecialchars($_POST['address']) : $user['address'];
+    $email = isset($_POST['email']) && !empty($_POST['email']) ? htmlspecialchars($_POST['email']) : $user['email'];
+    $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+    
+    // Debugging: Log variables to check final values
+    error_log("Address: $address, Email: $email, Password: " . (empty($password) ? "Not Updated" : "Updated"));
+
+    // Handle profile picture upload
     $profile_img = null;
     if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
         $img_name = basename($_FILES['profile_img']['name']);
@@ -34,36 +51,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $upload_dir = "../assets/profile/";
         $profile_img = $upload_dir . $img_name;
 
-        // Move the uploaded file to the destination directory
         if (!move_uploaded_file($img_temp, $profile_img)) {
             die("Error uploading the profile image.");
         }
     }
 
-    // Check if password is provided and hash it if not empty
+    // Update the database
     if (!empty($password)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "UPDATE users SET address = ?, email = ?, password = ?, img = IFNULL(?, img) WHERE user_id = ?";
+        
+        $query = "UPDATE users SET password = ?, address = ?, email = ?, img = IFNULL(?, img) WHERE user_id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssssi", $address, $email, $hashed_password, $profile_img, $user_id);
+        $stmt->bind_param("ssssi", $hashed_password, $address, $email, $profile_img, $user_id);
     } else {
-        // Skip password update if it's empty
         $query = "UPDATE users SET address = ?, email = ?, img = IFNULL(?, img) WHERE user_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sssi", $address, $email, $profile_img, $user_id);
     }
 
-    // Execute the update query
-    if ($stmt) {
-        if ($stmt->execute()) {
-            echo "<script>alert('Profile updated successfully!');</script>";
-        } else {
-            echo "<p class='text-danger'>Error updating profile: " . $stmt->error . "</p>";
-        }
-        $stmt->close();
+    if ($stmt->execute()) {
+        echo "<script>alert('Profile updated successfully!');</script>";
     } else {
-        die("<p class='text-danger'>Error preparing the query: " . $conn->error . "</p>");
+        echo "<p class='text-danger'>Error updating profile: " . $stmt->error . "</p>";
     }
+    $stmt->close();
     $conn->close();
 }
 ?>
@@ -116,28 +127,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1 class="text-center">My Account</h1>
         <form action="profile.php" method="post" enctype="multipart/form-data">
             <div class="text-center">
-                <img src="<?= htmlspecialchars($user['img'] ? $user['img'] : 'https://via.placeholder.com/150') ?>" alt="Profile Picture" class="profile-pic" id="profilePreview">
+                <img src="<?= htmlspecialchars($user['img'] ? $user['img'] : 'https://via.placeholder.com/150') ?>" alt="Profile Picture" class="profile-pic">
             </div>
             <div class="row mt-4">
                 <div class="col-md-6 mb-3">
                     <label for="first_name" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" value="<?= htmlspecialchars($user['first_name']) ?>" readonly>
+                    <input type="text" class="form-control" id="first_name" name="first_name" 
+                        placeholder="<?= isset($user['first_name']) ? htmlspecialchars($user['first_name']) : 'Enter first name' ?>" readonly>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="last_name" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" value="<?= htmlspecialchars($user['last_name']) ?>" readonly>
+                    <input type="text" class="form-control" id="last_name" name="last_name" 
+                        placeholder="<?= isset($user['last_name']) ? htmlspecialchars($user['last_name']) : 'Enter last name' ?>" readonly>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="contact_no" class="form-label">Contact No.</label>
-                    <input type="text" class="form-control" id="contact_no" name="contact_no" value="<?= htmlspecialchars($user['contact']) ?>" readonly>
+                    <input type="text" class="form-control" id="contact_no" name="contact_no" 
+                        placeholder="<?= isset($user['contact']) ? htmlspecialchars($user['contact']) : 'Enter contact no' ?>" readonly>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" value="<?= htmlspecialchars($user['address']) ?>">
+                    <input type="text" class="form-control" id="address" name="address" 
+                        value="<?= isset($user['address']) ? htmlspecialchars($user['address']) : '' ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>">
+                    <input type="email" class="form-control" id="email" name="email" 
+                        value="<?= isset($user['email']) ? htmlspecialchars($user['email']) : '' ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="password" class="form-label">Password</label>
@@ -146,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="col-md-6 mb-3">
                 <label for="profile_img" class="form-label">Upload New Profile Picture</label>
-                <input type="file" class="form-control" id="profile_img" name="profile_img" accept="image/*" onchange="previewImage(event)">
+                <input type="file" class="form-control" id="profile_img" name="profile_img" accept="image/*">
             </div>
 
             <div class="text-center">
@@ -159,15 +175,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function () {
-                const output = document.getElementById('profilePreview');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
 </body>
 </html>

@@ -1,12 +1,10 @@
 <?php
-
+session_start();
 include('../connection.php');
 
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || $_SESSION['account_type'] != 3) {
     header("Location: ../login.php");
-    exit();
+    exit;
 }
 
 // Fetch products with category "Ice Cream"

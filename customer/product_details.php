@@ -1,10 +1,11 @@
 <?php
 include('../connection.php');
+
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['account_type']) || $_SESSION['account_type'] != 3) {
     header("Location: ../login.php");
-    exit();
+    exit;
 }
 
 $user_id = $_SESSION['user_id'];
@@ -143,10 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="mb-3">
                         <strong>Select Dip:</strong>
                         <br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dip" id="noDip" value="noDip" checked>
-                            <label class="form-check-label" for="noDip">No Dip</label>
-                        </div>
                         <?php while ($dip = mysqli_fetch_assoc($dip_result)) { ?>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="dip" id="dip<?php echo $dip['dip_id']; ?>" value="<?php echo $dip['dip_id']; ?>">

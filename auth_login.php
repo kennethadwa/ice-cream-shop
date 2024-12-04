@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'connection.php';
+include('connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -24,7 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $user['email'];
             $_SESSION['account_type'] = $user['account_type'];
 
-            if($user['account_type'] == 3) {
+            // Debugging: Log session data
+            error_log("User logged in. Session: " . print_r($_SESSION, true));
+
+            if ($user['account_type'] == 3) {
                 header("Location: customer/index.php");
             }
             exit;

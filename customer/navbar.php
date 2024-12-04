@@ -34,9 +34,9 @@ $profile_image = $user['img'] ? $user['img'] : 'https://img.icons8.com/ios-fille
         color: #ff69b4;
         font-size: 1.1rem;
         font-weight: bold;
-        transition: all 0.3s ease; /* Updated transition for smooth effect */
-        padding: 8px 16px; /* Adds padding to make the border effect more visible */
-        border-radius: 20px; /* Rounds the corners of the link */
+        transition: all 0.3s ease;
+        padding: 8px 16px;
+        border-radius: 20px;
     }
     .navbar-toggler {
         border: none;
@@ -103,7 +103,7 @@ $profile_image = $user['img'] ? $user['img'] : 'https://img.icons8.com/ios-fille
         <!-- User Account Dropdown -->
 <div class="dropdown" style="margin-left: 20px;">
     <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: transparent; border:none;">
-        <img width="45" height="45" src="<?php echo $profile_image; ?>" alt="user" style="border-radius: 50%; border: 1px solid black; box-shadow: 1px 1px 5px black;"/>
+        <img width="45" height="45" src="<?php echo $profile_image; ?>" alt="user" style="border-radius: 50%; border: 2px solid pink; box-shadow: 1px 1px 5px black; background-size: cover; object-fit: cover;"/>
     </button>
     <ul class="dropdown-menu" aria-labelledby="userDropdown">
         <li>

@@ -1,11 +1,11 @@
 <?php
-session_start();
 include('../connection.php'); // Database connection
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
+session_start();
+
+if (!isset($_SESSION['account_type']) || $_SESSION['account_type'] != 3) {
+    header("Location: ../login.php");
+    exit;
 }
 
 $user_id = $_SESSION['user_id'];
@@ -15,21 +15,30 @@ function fetch_transactions($conn, $user_id, $status) {
     $query = "SELECT 
                 transactions.transaction_id,
                 CONCAT(users.first_name, ' ', users.last_name) AS customer,
-                transactions.product_name,
-                transactions.payment_method,
-                transactions.order_type,
                 transactions.total_amount,
+                payment.payment_method AS payment_method, 
+                order_types.order_type AS order_type,
+                transactions.pickup_time,
                 transactions.status,
-                transactions.transaction_date
+                transactions.transaction_date,
+                GROUP_CONCAT(DISTINCT products.name ORDER BY transaction_items.transaction_item_id ASC) AS product_names,
+                GROUP_CONCAT(DISTINCT transaction_items.additional_price ORDER BY transaction_items.transaction_item_id ASC) AS additional_prices
               FROM transactions
               INNER JOIN users ON transactions.user_id = users.user_id
-              WHERE transactions.user_id = ? AND transactions.status = ?";
+              LEFT JOIN transaction_items ON transactions.transaction_id = transaction_items.transaction_id
+              LEFT JOIN products ON transaction_items.product_id = products.product_id
+              LEFT JOIN payment ON transactions.payment_id = payment.payment_id
+              LEFT JOIN order_types ON transactions.order_id = order_types.order_id
+              WHERE transactions.user_id = ? AND transactions.status = ?
+              GROUP BY transactions.transaction_id
+              ORDER BY transactions.transaction_date DESC";
               
     $stmt = $conn->prepare($query);
     $stmt->bind_param("is", $user_id, $status);
     $stmt->execute();
     return $stmt->get_result();
 }
+
 
 $pending_transactions = fetch_transactions($conn, $user_id, 'Pending');
 $completed_transactions = fetch_transactions($conn, $user_id, 'Completed');
@@ -114,7 +123,7 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <th>Customer</th>
                             <th>Products</th>
                             <th>Payment Method</th>
-                            <th>Order Type</th>
+                            <th>Order ID</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Transaction Date</th>
@@ -125,7 +134,7 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <tr>
                                 <td><?= $row['transaction_id'] ?></td>
                                 <td><?= $row['customer'] ?></td>
-                                <td><?= $row['product_name'] ?></td>
+                                <td><?= $row['product_names'] ?></td>
                                 <td><?= $row['payment_method'] ?></td>
                                 <td><?= $row['order_type'] ?></td>
                                 <td><?= number_format($row['total_amount'], 2) ?></td>
@@ -146,7 +155,7 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <th>Customer</th>
                             <th>Products</th>
                             <th>Payment Method</th>
-                            <th>Order Type</th>
+                            <th>Order ID</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Transaction Date</th>
@@ -157,9 +166,9 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <tr>
                                 <td><?= $row['transaction_id'] ?></td>
                                 <td><?= $row['customer'] ?></td>
-                                <td><?= $row['product_name'] ?></td>
-                                <td><?= $row['payment_method'] ?></td>
-                                <td><?= $row['order_type'] ?></td>
+                                <td><?= $row['product_names'] ?></td>
+                                <td><?= $row['payment_id'] ?></td>
+                                <td><?= $row['order_id'] ?></td>
                                 <td><?= number_format($row['total_amount'], 2) ?></td>
                                 <td><?= $row['status'] ?></td>
                                 <td><?= $row['transaction_date'] ?></td>
@@ -178,7 +187,7 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <th>Customer</th>
                             <th>Products</th>
                             <th>Payment Method</th>
-                            <th>Order Type</th>
+                            <th>Order ID</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Transaction Date</th>
@@ -189,9 +198,9 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <tr>
                                 <td><?= $row['transaction_id'] ?></td>
                                 <td><?= $row['customer'] ?></td>
-                                <td><?= $row['product_name'] ?></td>
-                                <td><?= $row['payment_method'] ?></td>
-                                <td><?= $row['order_type'] ?></td>
+                                <td><?= $row['product_names'] ?></td>
+                                <td><?= $row['payment_id'] ?></td>
+                                <td><?= $row['order_id'] ?></td>
                                 <td><?= number_format($row['total_amount'], 2) ?></td>
                                 <td><?= $row['status'] ?></td>
                                 <td><?= $row['transaction_date'] ?></td>
