@@ -1,7 +1,5 @@
 <?php
-
 include('../connection.php');
-
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -48,7 +46,7 @@ if (isset($_GET['product_id'])) {
 // Handle add to cart action
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $size_id = $_POST['size'] ?? null;
-    $dip_id = $_POST['dip'] ?? 'noDip';
+    $dip_id = $_POST['dip'] === 'noDip' ? null : $_POST['dip']; // Handle 'noDip' option
     $toppings = $_POST['toppings'] ?? [];
     $quantity = $_POST['quantity'] ?? 1;
 
@@ -63,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    if ($dip_id != 'noDip') {
+    if ($dip_id) {
         $dip_query = "SELECT * FROM dips WHERE dip_id = $dip_id";
         $dip_result = mysqli_query($conn, $dip_query);
         if ($dip = mysqli_fetch_assoc($dip_result)) {
@@ -83,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insert into the cart table first (without toppings)
     $insert_query = "INSERT INTO cart (user_id, product_id, dip_id, size_id, quantity, additional_price, total_price)
-                     VALUES ($user_id, $product_id, '$dip_id', $size_id, $quantity, $additional_price, $total_price)";
+                     VALUES ($user_id, $product_id, " . ($dip_id ? $dip_id : "NULL") . ", $size_id, $quantity, $additional_price, $total_price)";
 
     if (mysqli_query($conn, $insert_query)) {
         // Get the last inserted cart_id
@@ -103,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 
 
 
@@ -145,13 +144,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <strong>Select Dip:</strong>
                         <br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dip" id="noDip" value="1" checked>
+                            <input class="form-check-input" type="radio" name="dip" id="noDip" value="noDip" checked>
                             <label class="form-check-label" for="noDip">No Dip</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dip" id="withDip" value="2">
-                            <label class="form-check-label" for="withDip">With Dip</label>
-                        </div>
+                        <?php while ($dip = mysqli_fetch_assoc($dip_result)) { ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="dip" id="dip<?php echo $dip['dip_id']; ?>" value="<?php echo $dip['dip_id']; ?>">
+                                <label class="form-check-label" for="dip<?php echo $dip['dip_id']; ?>"><?php echo $dip['dip_type']; ?></label>
+                            </div>
+                        <?php } ?>
                     </div>
 
                     <!-- Topping Options -->
@@ -192,13 +193,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
 </body>
 </html>

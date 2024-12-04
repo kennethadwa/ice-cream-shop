@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['account_type'] != 1 && $_SESSION
     exit();
 }
 
-$query = "
+$queryDelivery = "
     SELECT 
         t.transaction_id,
         CONCAT(u.first_name, ' ', u.last_name) AS full_name, 
@@ -25,9 +25,29 @@ $query = "
     JOIN 
         users u ON t.user_id = u.user_id
     WHERE 
-        t.status = 'pending'
+        t.status = 'pending' AND t.order_type = 'For Delivery'
 ";
-$result = $conn->query($query);
+$resultDelivery = $conn->query($queryDelivery);
+
+$queryPickup = "
+    SELECT 
+        t.transaction_id,
+        CONCAT(u.first_name, ' ', u.last_name) AS full_name, 
+        u.address AS delivery_address, 
+        t.product_name, 
+        t.payment_method, 
+        t.order_type, 
+        t.total_amount, 
+        t.pickup_time, 
+        t.status
+    FROM 
+        transactions t
+    JOIN 
+        users u ON t.user_id = u.user_id
+    WHERE 
+        t.status = 'pending' AND t.order_type = 'Pick-Up'
+";
+$resultPickup = $conn->query($queryPickup);
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +77,12 @@ $result = $conn->query($query);
 </head>
 
 <body id="page-top">
-    <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
         <?php include('sidebar.php'); ?>
-
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Navbar -->
             <?php include('navbar.php'); ?>
-
-            <!-- Main Content -->
             <div id="content">
-                <!-- Begin Page Content -->
                 <div class="container-fluid mt-5">
-                    <!-- DataTable Example -->
                     <div class="card mb-4" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.5);">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary">Admin Account List</h6>
@@ -81,63 +92,97 @@ $result = $conn->query($query);
                             <h6 class="m-0 font-weight-bold text-primary">Pending Orders</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Full Name</th>
-                                            <th>Delivery Address</th>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Order Type</th>
-                                            <th>Pickup Time</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Full Name</th>
-                                            <th>Delivery Address</th>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Order Type</th>
-                                            <th>Pickup Time</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        // Check if any pending orders exist
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                                echo "<td>{$row['full_name']}</td>";
-                                                echo "<td>{$row['delivery_address']}</td>";
-                                                echo "<td>{$row['product_name']}</td>";
-                                                echo "<td>₱" . number_format($row['total_amount'], 2) . "</td>";
-                                                echo "<td><span class='badge badge-" . ($row['order_type'] == 'For Delivery' ? 'success' : 'primary') . "'>{$row['order_type']}</span></td>";
-                                                echo "<td>{$row['pickup_time']}</td>";
-                                                echo "<td><span class='badge badge-danger'>{$row['status']}</span></td>";
-                                                echo "<td><a href='edit_pending_order.php?transaction_id={$row['transaction_id']}' class='btn btn-primary btn-sm'>Update</a></td>";
-                                                echo "</tr>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='8' class='text-center'>No pending orders found.</td></tr>";
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                            <ul class="nav nav-tabs" id="orderTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="delivery-tab" data-bs-toggle="tab" data-bs-target="#delivery" type="button" role="tab" aria-controls="delivery" aria-selected="true">For Delivery</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pickup-tab" data-bs-toggle="tab" data-bs-target="#pickup" type="button" role="tab" aria-controls="pickup" aria-selected="false">Pick-Up</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="orderTabsContent">
+                                <div class="tab-pane fade show active" id="delivery" role="tabpanel" aria-labelledby="delivery-tab">
+                                    <div class="table-responsive mt-3">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Delivery Address</th>
+                                                    <th>Product</th>
+                                                    <th>Price</th>
+                                                    <th>Order Type</th>
+                                                    <th>Pickup Time</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                if ($resultDelivery->num_rows > 0) {
+                                                    while ($row = $resultDelivery->fetch_assoc()) {
+                                                        echo "<tr>";
+                                                        echo "<td>{$row['full_name']}</td>";
+                                                        echo "<td>{$row['delivery_address']}</td>";
+                                                        echo "<td>{$row['product_name']}</td>";
+                                                        echo "<td>₱" . number_format($row['total_amount'], 2) . "</td>";
+                                                        echo "<td><span class='badge badge-success'>{$row['order_type']}</span></td>";
+                                                        echo "<td>{$row['pickup_time']}</td>";
+                                                        echo "<td><span class='badge badge-danger'>{$row['status']}</span></td>";
+                                                        echo "<td><a href='edit_pending_order.php?transaction_id={$row['transaction_id']}' class='btn btn-primary btn-sm'>Update</a></td>";
+                                                        echo "</tr>";
+                                                    }
+                                                } else {
+                                                    echo "<tr><td colspan='8' class='text-center'>No pending delivery orders found.</td></tr>";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pickup" role="tabpanel" aria-labelledby="pickup-tab">
+                                    <div class="table-responsive mt-3">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Delivery Address</th>
+                                                    <th>Product</th>
+                                                    <th>Price</th>
+                                                    <th>Order Type</th>
+                                                    <th>Pickup Time</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                if ($resultPickup->num_rows > 0) {
+                                                    while ($row = $resultPickup->fetch_assoc()) {
+                                                        echo "<tr>";
+                                                        echo "<td>{$row['full_name']}</td>";
+                                                        echo "<td>{$row['delivery_address']}</td>";
+                                                        echo "<td>{$row['product_name']}</td>";
+                                                        echo "<td>₱" . number_format($row['total_amount'], 2) . "</td>";
+                                                        echo "<td><span class='badge badge-primary'>{$row['order_type']}</span></td>";
+                                                        echo "<td>{$row['pickup_time']}</td>";
+                                                        echo "<td><span class='badge badge-danger'>{$row['status']}</span></td>";
+                                                        echo "<td><a href='edit_pending_order.php?transaction_id={$row['transaction_id']}' class='btn btn-primary btn-sm'>Update</a></td>";
+                                                        echo "</tr>";
+                                                    }
+                                                } else {
+                                                    echo "<tr><td colspan='8' class='text-center'>No pending pick-up orders found.</td></tr>";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End of Page Content -->
             </div>
-            <!-- End of Main Content -->
         </div>
-        <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
 
