@@ -27,8 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Debugging: Log session data
             error_log("User logged in. Session: " . print_r($_SESSION, true));
 
+            // Redirect based on account_type
             if ($user['account_type'] == 3) {
                 header("Location: customer/index.php");
+            } else {
+                // Redirect back to login if account_type is not 3
+                echo "<script>
+                    alert('Access denied. Please check your account.');
+                    window.location.href = 'login.php';
+                </script>";
             }
             exit;
         } else {

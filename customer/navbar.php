@@ -3,7 +3,7 @@
 require '../connection.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
 
@@ -101,23 +101,23 @@ $profile_image = $user['img'] ? $user['img'] : 'https://img.icons8.com/ios-fille
         <br>
 
         <!-- User Account Dropdown -->
-<div class="dropdown" style="margin-left: 20px;">
-    <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: transparent; border:none;">
-        <img width="45" height="45" src="<?php echo $profile_image; ?>" alt="user" style="border-radius: 50%; border: 2px solid pink; box-shadow: 1px 1px 5px black; background-size: cover; object-fit: cover;"/>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="userDropdown">
-        <li>
-            <a class="dropdown-item" href="profile.php">
-                <i class="bi bi-person-circle me-2"></i> My Account
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="logout.php">
-                <i class="bi bi-box-arrow-right me-2"></i> Log Out
-            </a>
-        </li>
-    </ul>
-</div>
+          <div class="dropdown" style="margin-left: 20px;">
+              <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: transparent; border:none;">
+                  <img width="45" height="45" src="<?php echo $profile_image; ?>" alt="user" style="border-radius: 50%; border: 2px solid pink; box-shadow: 1px 1px 5px black; background-size: cover; object-fit: cover;"/>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                  <li>
+                      <a class="dropdown-item" href="profile.php">
+                          <i class="bi bi-person-circle me-2"></i> My Account
+                      </a>
+                  </li>
+                  <li>
+                      <a class="dropdown-item" href="logout.php">
+                          <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                      </a>
+                  </li>
+              </ul>
+          </div>
     </div>
 </nav>
 
