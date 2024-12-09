@@ -93,7 +93,6 @@ $profile_image = $user['img'] ? $user['img'] : 'https://img.icons8.com/ios-fille
                 <a class="btn" href="cart.php" type="submit" style="background: #ff69b4; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: white;">
                     <i class="bi-cart-fill me-1" style="color: white;"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </a>
             </form>
         </div>
