@@ -1,25 +1,33 @@
 <style>
     .bg-gradient-icecream {
-        background: #FF76CE;
-        background-size: cover;
+        background: linear-gradient(180deg, #2D2F33, #3E4147);
     }
     .sidebar-dark .nav-link {
-        color: #ffffff;
+        color: #AEB6BF;
     }
     .sidebar-dark .nav-link:hover {
-        color: white;
+        color: #E5E8E8;
     }
     .sidebar-dark .sidebar-brand {
-        color: #fff;
+        color: #F7F9F9;
     }
     .collapse-inner .collapse-item {
-        color: white !important; /* Ensures text is white */
+        color: #AEB6BF !important; 
     }
     .collapse-inner .collapse-item:hover {
-        background-color: #EB3678 !important; /* Makes background black on hover */
-        color: white !important; /* Keeps the text color white on hover */
+        background-color: #53575D !important;
+        color: #F7F9F9 !important;
+    }
+    hr.sidebar-divider {
+        border-color: #55595C;
+    }
+    .sidebar-dark .sidebar-heading {
+        color: #EAECEE;
+        font-size: 0.85rem;
+        font-weight: 600;
     }
 </style>
+
 
 
 <!-- Sidebar -->
@@ -58,7 +66,7 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Products</span>
                 </a>
-                <div id="collapseTwo" class="core collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
+                <div id="collapseTwo" class="core collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: linear-gradient(180deg, #2D2F33, #3E4147);">
                     <div class="core py-2 collapse-inner rounded" style="background-color: transparent;">
                         <a class="collapse-item" href="manage_products.php" style="color: white;">Manage Products</a>
                         <a class="collapse-item" href="manage_sizes.php" style="color: white;">Manage Sizes</a>
@@ -85,7 +93,7 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Manage Orders</span>
                 </a>
-                <div id="orders" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
+                <div id="orders" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: linear-gradient(180deg, #2D2F33, #3E4147);">
                     <div class="py-2 collapse-inner rounded">
                         <a class="collapse-item" href="pending_orders.php" style="color: #FF204E;">Pending Orders</a>
                         <a class="collapse-item" href="completed_orders.php" style="color: white;">Completed Orders</a>
@@ -110,7 +118,7 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>User Account</span>
                 </a>
-                <div id="userAccount" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: #FF76CE;">
+                <div id="userAccount" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="background: linear-gradient(180deg, #2D2F33, #3E4147);">
                     <div class="py-2 collapse-inner rounded">
                         <a class="collapse-item" href="customer_account.php" style="color: #FF204E;">Customer</a>
                         <a class="collapse-item" href="admin_account.php" style="color: white;">Admin</a>

@@ -1,6 +1,27 @@
+<?php
+require '../connection.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../login.php');
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Fetch the user's image from the database
+$sqls = "SELECT img FROM users WHERE user_id = ?";
+$stmts = $conn->prepare($sqls);
+$stmts->bind_param("i", $user_id);
+$stmts->execute();
+$results = $stmts->get_result();
+$user = $results->fetch_assoc();
+
+$profile_image = $user['img'] ? $user['img'] : 'https://img.icons8.com/ios-filled/50/user.png'; // Default image if none
+?>
+
 <style>
     .navbar {
-        background-color: #FF76CE;
+        background: linear-gradient(180deg, #2D2F33, #3E4147);
         position: sticky;
         top: 0;
         z-index: 1000;
@@ -26,6 +47,12 @@
     .nav-item:hover .nav-link {
         cursor: pointer;
     }
+    button:focus, 
+img:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 </style>
 
 <!-- Navbar -->
@@ -39,8 +66,8 @@
         <div class="collapse navbar-collapse d-flex justify-content-end mr-5" id="navbarNav">
             <!-- User Account Dropdown -->
             <div class="dropdown ms-3 mr-4">
-                <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: white;">
-                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/user.png" alt="user" style="color: white; background: white;"/>
+                <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: transparent; border:none;">
+                    <img width="45" height="45" src="<?php echo $profile_image; ?>" alt="user" style="border-radius: 50%; border: 2px solid pink; box-shadow: 1px 1px 5px black; background-size: cover; object-fit: cover;"/>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="userDropdown">
                     <li>
@@ -61,4 +88,7 @@
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
