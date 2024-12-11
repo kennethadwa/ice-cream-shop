@@ -1,3 +1,20 @@
+<?php
+
+include('../connection.php');
+
+// Get the current month and year
+$currentMonth = date('m');
+$currentYear = date('Y');
+
+// Query to get the sum of total_amount for the current month
+$query = "SELECT SUM(total_amount) AS monthly_income FROM transactions WHERE MONTH(transaction_date) = $currentMonth AND YEAR(transaction_date) = $currentYear";
+$result = mysqli_query($conn, $query);
+
+// Fetch the result
+$row = mysqli_fetch_assoc($result);
+$monthlyIncome = $row['monthly_income'] ? $row['monthly_income'] : 0; // Default to 0 if no data found
+?>
+
 <style>
     .ice-cream-card {
         border: none;
@@ -56,7 +73,9 @@
                     <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
                         Earnings (Monthly)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-white">$40,000</div>
+                    <div class="h5 mb-0 font-weight-bold text-white">
+                        ₱<?php echo number_format($monthlyIncome, 2); ?>
+                    </div>
                 </div>
                 <div class="ice-cream-icon">
                     <i class="fas fa-ice-cream"></i> 

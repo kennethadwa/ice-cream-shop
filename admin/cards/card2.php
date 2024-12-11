@@ -1,3 +1,19 @@
+<?php
+
+include('../connection.php');
+
+// Get the current year
+$currentYear = date('Y');
+
+// Query to get the sum of total_amount for the current year
+$query = "SELECT SUM(total_amount) AS annual_income FROM transactions WHERE YEAR(transaction_date) = $currentYear";
+$result = mysqli_query($conn, $query);
+
+// Fetch the result
+$row = mysqli_fetch_assoc($result);
+$annualIncome = $row['annual_income'] ? $row['annual_income'] : 0; // Default to 0 if no data found
+?>
+
 <style>
     .pistachio-card {
         border: none;
@@ -56,7 +72,9 @@
                     <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
                         Earnings (Annual)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-white">$215,000</div>
+                    <div class="h5 mb-0 font-weight-bold text-white">
+                        ₱<?php echo number_format($annualIncome, 2); ?>
+                    </div>
                 </div>
                 <div class="pistachio-icon">
                     <i class="fas fa-dollar-sign"></i> <!-- Dollar sign icon -->

@@ -1,3 +1,25 @@
+<?php
+
+include('../connection.php');
+
+// Query to get the count of pending orders
+$query = "SELECT COUNT(*) AS pending_orders FROM transactions WHERE status = 'Pending'";
+$result = mysqli_query($conn, $query);
+
+// Fetch the result
+$row = mysqli_fetch_assoc($result);
+$pendingOrders = $row['pending_orders'] ? $row['pending_orders'] : 0; // Default to 0 if no data found
+
+// Query to get the total number of orders for percentage calculation
+$totalQuery = "SELECT COUNT(*) AS total_orders FROM transactions";
+$totalResult = mysqli_query($conn, $totalQuery);
+$totalRow = mysqli_fetch_assoc($totalResult);
+$totalOrders = $totalRow['total_orders'] ? $totalRow['total_orders'] : 1; // Default to 1 to prevent division by zero
+
+// Calculate the percentage of pending orders
+$pendingPercentage = ($pendingOrders / $totalOrders) * 100;
+?>
+
 <style>
     .mango-card {
         border: none;
@@ -27,12 +49,23 @@
         font-size: 1.5rem;
     }
 
+    .mango-progress {
+        height: 8px;
+        background: #FFF5E1; 
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .mango-progress-bar {
+        background: #FF4500;
+    }
+
     .mango-icon {
-        position: absolute;
-        top: -20px;
-        right: -20px;
-        background: #FF4500; /* Bold orange for the icon background */
-        padding: 15px;
+        position: relative;
+        top: -10px;
+        right: -10px;
+        background: #FF6347; /* Bold orange for the icon background */
+        padding: 10px;
         border-radius: 50%;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
@@ -46,6 +79,12 @@
         transform: translateY(-5px);
         transition: all 0.3s ease-in-out;
     }
+
+    .mango-percentage {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
 </style>
 
 <div class="col-xl-3 col-md-6 mb-4">
@@ -56,10 +95,29 @@
                     <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
                         Pending Orders
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-white">18</div>
+                    <div class="h5 mb-0 font-weight-bold text-white text-center" style="margin-left: 50px;">
+                        <?php echo $pendingOrders; ?>
+                    </div>
                 </div>
                 <div class="mango-icon">
-                    <i class="fas fa-comments"></i> <!-- Chat bubble icon -->
+                    <i class="fas fa-comments"></i>
+                </div>
+            </div>
+            <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                    <div class="mango-percentage">
+                        <div class="text-xs text-white" style="margin-right: 10px;">
+                            <?php echo number_format($pendingPercentage, 2); ?>%
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mango-progress">
+                        <div class="progress-bar mango-progress-bar" role="progressbar" 
+                            style="width: <?php echo $pendingPercentage; ?>%" 
+                            aria-valuenow="<?php echo $pendingPercentage; ?>" 
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>

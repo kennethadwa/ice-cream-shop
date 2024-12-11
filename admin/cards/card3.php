@@ -1,3 +1,25 @@
+<?php
+
+include('../connection.php');
+
+// Query to get the count of completed orders
+$query = "SELECT COUNT(*) AS completed_orders FROM transactions WHERE status = 'Completed'";
+$result = mysqli_query($conn, $query);
+
+// Fetch the result
+$row = mysqli_fetch_assoc($result);
+$completedOrders = $row['completed_orders'] ? $row['completed_orders'] : 0; // Default to 0 if no data found
+
+// Query to get the total number of orders for percentage calculation
+$totalQuery = "SELECT COUNT(*) AS total_orders FROM transactions";
+$totalResult = mysqli_query($conn, $totalQuery);
+$totalRow = mysqli_fetch_assoc($totalResult);
+$totalOrders = $totalRow['total_orders'] ? $totalRow['total_orders'] : 1; // Default to 1 to prevent division by zero
+
+// Calculate the percentage of completed orders
+$completedPercentage = ($completedOrders / $totalOrders) * 100;
+?>
+
 <style>
     .blueberry-card {
         border: none;
@@ -64,21 +86,30 @@
         <div class="blueberry-card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Completed Orders</div>
-                    <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-white">50%</div>
-                        </div>
-                        <div class="col">
-                            <div class="blueberry-progress">
-                                <div class="progress-bar blueberry-progress-bar" role="progressbar" 
-                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
+                        Completed Orders
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-white text-center">
+                        <?php echo $completedOrders; ?> 
                     </div>
                 </div>
                 <div class="blueberry-icon">
-                    <i class="fas fa-clipboard-list"></i> <!-- Clipboard list icon -->
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+            </div>
+            <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-white">
+                        <?php echo number_format($completedPercentage, 2); ?>%
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="blueberry-progress">
+                        <div class="progress-bar blueberry-progress-bar" role="progressbar" 
+                            style="width: <?php echo $completedPercentage; ?>%" 
+                            aria-valuenow="<?php echo $completedPercentage; ?>" 
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>

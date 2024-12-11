@@ -73,14 +73,16 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['account_type'] != 1 && $_SESSION
                         <?php include('cards/card4.php'); ?>
                     </div>
 
-                    <!-- Content Row -->
+                    <?php include('cards/card6.php'); ?>
 
+                    <!-- Content Row -->
                     <div class="row">
 
                         <!-- Earnings Overview -->
                         <?php include('cards/card5.php'); ?>
 
                     </div>
+        
         </div>
         <!-- End of Content Wrapper -->
 

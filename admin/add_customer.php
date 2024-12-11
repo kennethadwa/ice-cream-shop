@@ -95,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php include('navbar.php'); ?>
             <div id="content">
                 <div class="container my-5" style="padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
-                    <h1 class="text-center">Add New Customer</h1> <!-- Title/Header Text -->
                     <form action="add_customer.php" method="post" enctype="multipart/form-data">
                         <div class="text-center">
                             <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
