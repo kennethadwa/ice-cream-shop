@@ -115,18 +115,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $stmt->close();
 
-    // Display success alert
-    echo "<script>alert('Purchase successful. Thank you for ordering!');</script>";
+    // Set session variable to indicate success
+    $_SESSION['order_success'] = true;
 
     // Redirect to a confirmation page or thank you page
     header("Location: cart.php");
     exit();
 }
 
-
-// Place $conn->close(); here at the end of the script, after all queries are executed
-$conn->close();
+if (isset($_SESSION['order_success']) && $_SESSION['order_success']): ?>
+    <script>
+        alert('Purchase successful. Thank you for ordering!');
+    </script>
+    <?php unset($_SESSION['order_success']); ?>
+<?php endif;
 ?>
+
 
 
 <!DOCTYPE html>
@@ -263,3 +267,7 @@ $conn->close();
 
 </body>
 </html>
+
+<?php
+$conn->close();
+?>
