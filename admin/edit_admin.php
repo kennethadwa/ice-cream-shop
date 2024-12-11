@@ -8,6 +8,21 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['account_type'] != 1 && $_SESSION
     exit();
 }
 
+$customer_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+if ($customer_id === 0) {
+    die("Invalid customer ID.");
+}
+
+// Fetch customer data based on ID
+$query = "SELECT * FROM users WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $customer_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = htmlspecialchars($_POST['address']);
     $email = htmlspecialchars($_POST['email']);
@@ -28,16 +43,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Insert new customer data into the database with account_type = 3
-    $query = "INSERT INTO users (first_name, last_name, contact, password, address, email, img, account_type) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, 3)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssssss", $first_name, $last_name, $contact, $password, $address, $email, $profile_img);
+    $query = $password 
+    ? "UPDATE users SET first_name = ?, last_name = ?, contact = ?, password = ?, address = ?, email = ?, img = IFNULL(?, img) WHERE user_id = ?"
+    : "UPDATE users SET first_name = ?, last_name = ?, contact = ?, address = ?, email = ?, img = IFNULL(?, img) WHERE user_id = ?";
+
+$stmt = $conn->prepare($query);
+
+if ($password) {
+    $stmt->bind_param("sssssssi", $first_name, $last_name, $contact, $password, $address, $email, $profile_img, $user_id);
+} else {
+    $stmt->bind_param("ssssssi", $first_name, $last_name, $contact, $address, $email, $profile_img, $user_id);
+}
 
     if ($stmt->execute()) {
-        echo "<script>alert('Customer added successfully!');</script>";
+        echo "<script>alert('Profile updated successfully!');</script>";
     } else {
-        echo "<p class='text-danger'>Error adding customer: " . $stmt->error . "</p>";
+        echo "<p class='text-danger'>Error updating profile: " . $stmt->error . "</p>";
     }
 
     $stmt->close();
@@ -82,10 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 50%;
             margin-bottom: 20px;
         }
-        #content {
+        #content{
             background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
         }
-    </style>
+        </style>
 </head>
 
 <body id="page-top">
@@ -95,43 +116,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php include('navbar.php'); ?>
             <div id="content">
                 <div class="container my-5" style="padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
-                    <h1 class="text-center">Add New Customer</h1> <!-- Title/Header Text -->
-                    <form action="add_customer.php" method="post" enctype="multipart/form-data">
+                    <form action="edit_customer.php" method="post" enctype="multipart/form-data">
                         <div class="text-center">
-                            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+                            <img src="<?= htmlspecialchars($user['img'] ? $user['img'] : 'https://via.placeholder.com/150') ?>" alt="Profile Picture" class="profile-pic">
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-6 mb-3">
                                 <label for="first_name" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                <input type="text" class="form-control" id="first_name" name="first_name" 
+                                    value="<?= htmlspecialchars($user['first_name']) ?>" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                <input type="text" class="form-control" id="last_name" name="last_name" 
+                                    value="<?= htmlspecialchars($user['last_name']) ?>" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="contact" class="form-label">Contact</label>
-                                <input type="text" class="form-control" id="contact" name="contact" required>
+                                <input type="text" class="form-control" id="contact" name="contact" 
+                                    value="<?= htmlspecialchars($user['contact']) ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" required>
+                                <input type="text" class="form-control" id="address" name="address" 
+                                    value="<?= htmlspecialchars($user['address']) ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" name="email" 
+                                    value="<?= htmlspecialchars($user['email']) ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control" id="password" name="password" value="">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="profile_img" class="form-label">Upload Profile Picture</label>
+                                <label for="profile_img" class="form-label">Upload New Profile Picture</label>
                                 <input type="file" class="form-control" id="profile_img" name="profile_img" accept="image/*">
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success mt-3">Add Customer</button>
+                            <button type="submit" class="btn btn-success mt-3">Update Customer</button>
                         </div>
                     </form>
                 </div>
@@ -160,3 +185,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

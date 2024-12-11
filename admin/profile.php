@@ -118,6 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 50%;
             margin-bottom: 20px;
         }
+        #content{
+            background: linear-gradient(135deg, #f9e5d9, #c3e7c4, #ffefbb);
+        }
         </style>
 </head>
 
@@ -134,8 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!--NAVBAR-->
          <?php include ('navbar.php'); ?>
 
-            <!-- Main Content -->
-            <div id="content">
+         <!-- Main Content -->
+        <div id="content">
 
         <div class="container my-5" style="padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
         <form action="profile.php" method="post" enctype="multipart/form-data">
@@ -209,6 +212,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Page level custom scripts -->
     <script src="./js/demo/datatables-demo.js"></script>
+
+    
 
 </body>
 

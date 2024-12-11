@@ -199,7 +199,7 @@ $conn->close();
                     <br>
                     <select id="payment-method" name="payment_method" class="form-select" style="width: 200px;">
                         <?php foreach ($payment_methods as $method): ?>
-                            <option value="<?php echo $method['payment_id']; ?>">
+                            <option value="<?php echo $method['payment_id']; ?>" <?php echo count($payment_methods) === 1 ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($method['payment_method']); ?>
                             </option>
                         <?php endforeach; ?>
@@ -209,10 +209,9 @@ $conn->close();
                     <br>
                     <select id="order-type" name="order_type" class="form-select" style="width: 200px;">
                         <?php foreach ($order_types as $order_type): ?>
-                            <option value="<?php echo $order_type['order_id']; ?>">
+                            <option value="<?php echo $order_type['order_id']; ?>" <?php echo count($order_types) === 1 ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($order_type['order_type']); ?>
                             </option>
-
                         <?php endforeach; ?>
                     </select>
 
@@ -224,7 +223,7 @@ $conn->close();
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-success btn-block">Place Order</button>
+            <button id="place-order-button" type="submit" class="btn btn-success btn-block" disabled>Place Order</button>
         </form>
 
         <?php endif; ?>
@@ -239,15 +238,28 @@ $conn->close();
        document.getElementById('order-type').addEventListener('change', function () {
     var orderType = this.value;
     var pickupTimeContainer = document.getElementById('pickup-time-container');
-
-    // Check for the correct order type ID for "Pick-Up" (update the value below to match your database)
-    if (orderType == '2') { // Assuming '2' is the ID for 'Pick-Up' order type in the database
+    if (orderType == '2') {
         pickupTimeContainer.style.display = 'block';
     } else {
         pickupTimeContainer.style.display = 'none';
         }
     });
-
     </script>
+
+    <script>
+    const totalAmount = <?php echo $total_amount; ?>;
+    const placeOrderButton = document.getElementById('place-order-button');
+
+    function checkTotalAmount() {
+        if (totalAmount >= 129) {
+            placeOrderButton.disabled = false; // Enable button
+        } else {
+            placeOrderButton.disabled = true; // Disable button
+        }
+    }
+
+    checkTotalAmount();
+</script>
+
 </body>
 </html>
