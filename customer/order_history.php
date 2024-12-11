@@ -123,10 +123,11 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <th>Customer</th>
                             <th>Products</th>
                             <th>Payment Method</th>
-                            <th>Order ID</th>
+                            <th>Order Type</th>
+                            <th>Pick Up Time</th>
                             <th>Total</th>
                             <th>Status</th>
-                            <th>Transaction Date</th>
+                            <th>Transaction Date</th>              
                         </tr>
                     </thead>
                     <tbody>
@@ -137,6 +138,15 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                                 <td><?= $row['product_names'] ?></td>
                                 <td><?= $row['payment_method'] ?></td>
                                 <td><?= $row['order_type'] ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['order_type'] == 'For Delivery') {
+                                        echo 'Not Applicable';
+                                    } else {
+                                        echo $row['pickup_time'];
+                                    }
+                                    ?>
+                                </td>
                                 <td><?= number_format($row['total_amount'], 2) ?></td>
                                 <td><?= $row['status'] ?></td>
                                 <td><?= $row['transaction_date'] ?></td>
@@ -155,7 +165,8 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <th>Customer</th>
                             <th>Products</th>
                             <th>Payment Method</th>
-                            <th>Order ID</th>
+                            <th>Order Type</th>
+                            <th>Pick Up Time</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Transaction Date</th>
@@ -167,11 +178,20 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                                 <td><?= $row['transaction_id'] ?></td>
                                 <td><?= $row['customer'] ?></td>
                                 <td><?= $row['product_names'] ?></td>
-                                <td><?= $row['payment_id'] ?></td>
-                                <td><?= $row['order_id'] ?></td>
+                                <td><?= $row['payment_method'] ?></td>
+                                <td><?= $row['order_type'] ?></td>
                                 <td><?= number_format($row['total_amount'], 2) ?></td>
                                 <td><?= $row['status'] ?></td>
                                 <td><?= $row['transaction_date'] ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['order_type'] == 'Delivery') {
+                                        echo 'Not Applicable';
+                                    } else {
+                                        echo $row['pickup_time'];
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -187,7 +207,8 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                             <th>Customer</th>
                             <th>Products</th>
                             <th>Payment Method</th>
-                            <th>Order ID</th>
+                            <th>Order Type</th>
+                            <th>Pick Up Time</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Transaction Date</th>
@@ -199,8 +220,17 @@ $cancelled_transactions = fetch_transactions($conn, $user_id, 'Cancelled');
                                 <td><?= $row['transaction_id'] ?></td>
                                 <td><?= $row['customer'] ?></td>
                                 <td><?= $row['product_names'] ?></td>
-                                <td><?= $row['payment_id'] ?></td>
-                                <td><?= $row['order_id'] ?></td>
+                                <td><?= $row['payment_method'] ?></td>
+                                <td><?= $row['order_type'] ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['order_type'] == 'For Delivery') {
+                                        echo 'Not Applicable';
+                                    } else {
+                                        echo $row['pickup_time'];
+                                    }
+                                    ?>
+                                </td>
                                 <td><?= number_format($row['total_amount'], 2) ?></td>
                                 <td><?= $row['status'] ?></td>
                                 <td><?= $row['transaction_date'] ?></td>
